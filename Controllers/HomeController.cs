@@ -13,21 +13,25 @@ namespace Lucy.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+        // Ilogger voor dependency injection op homecontroller
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
 
+        // als de index pagina wordt gerequest, laat hij die view zien
         public IActionResult Index()
         {
             return View();
         }
 
+        //zelfte verhaal andere pagina als hier boven
         public IActionResult Privacy()
         {
             return View();
         }
 
+        //laat errorpagina zien als er iets fout gaat met de response
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
