@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LucyData", "LucyData\LucyData.csproj", "{8B469FEE-E3E8-417F-8385-F1392FA7657A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LucyView", "LucyView\LucyView.csproj", "{7A2BC05D-7589-4863-AF32-9D4A4B9A696C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LucyLogic", "LucyLogic\LucyLogic.csproj", "{F96AE82E-DD81-4985-BB66-DD993B4B1EBB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B469FEE-E3E8-417F-8385-F1392FA7657A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B469FEE-E3E8-417F-8385-F1392FA7657A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B469FEE-E3E8-417F-8385-F1392FA7657A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B469FEE-E3E8-417F-8385-F1392FA7657A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A2BC05D-7589-4863-AF32-9D4A4B9A696C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A2BC05D-7589-4863-AF32-9D4A4B9A696C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A2BC05D-7589-4863-AF32-9D4A4B9A696C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A2BC05D-7589-4863-AF32-9D4A4B9A696C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F96AE82E-DD81-4985-BB66-DD993B4B1EBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F96AE82E-DD81-4985-BB66-DD993B4B1EBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F96AE82E-DD81-4985-BB66-DD993B4B1EBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F96AE82E-DD81-4985-BB66-DD993B4B1EBB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE4B50E1-42A5-410E-99EC-93ACE764AC77}
+	EndGlobalSection
+EndGlobal
