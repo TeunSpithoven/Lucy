@@ -1,47 +1,46 @@
-﻿using Data.Controllers;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Data.Factories;
 using Data.Interfaces;
 using Data.Models;
 using Logic.Interfaces;
 using Logic.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Logic
+
+namespace Logic.Controllers
 {
     public class DreamLogicController : IDreamLogicController
     {
-        public void AddDreamToContainer(DreamLogicModel logicDream)
+        public void AddDream(DreamLogicModel viewDream)
         {
-            DreamDataControllerFactory dreamDataControllerFactory = new();
-            IDreamDataController dataController = dreamDataControllerFactory.DreamDataController();
-            DreamDataModel dataDream = new(logicDream.Id, logicDream.UserId, logicDream.Title, logicDream.Story);
-            dataController.AddDream(dataDream);
+            DreamDataControllerFactory dataControllerFactory = new();
+            IDreamDataController dreamDataController = dataControllerFactory.DreamDataController();
+            DreamDataModel dataDream = new(viewDream.Id, viewDream.UserId, viewDream.Title, viewDream.Story);
+            dreamDataController.AddDream(dataDream);
         }
 
-        public void RemoveDreamFromContainer(DreamLogicModel logicDream)
+        public void RemoveDream(int id)
         {
-            DreamDataControllerFactory dreamDataControllerFactory = new();
-            IDreamDataController dataController = dreamDataControllerFactory.DreamDataController();
-            DreamDataModel dataDream = new(logicDream.Id, logicDream.UserId, logicDream.Title, logicDream.Story);
-            dataController.RemoveDream(dataDream);
+            DreamDataControllerFactory dataControllerFactory = new();
+            IDreamDataController dreamDataController = dataControllerFactory.DreamDataController();
+            dreamDataController.RemoveDream(id);
         }
 
-        public List<DreamLogicModel> GetDreamsFromContainer()
+        public List<DreamLogicModel> GetDreams()
         {
-            DreamDataControllerFactory dreamDataControllerFactory = new();
-            IDreamDataController dataController = dreamDataControllerFactory.DreamDataController();
-            List<DreamDataModel> dataDreams = dataController.GetDreams();
-            List<DreamLogicModel> returnList = new();
-            foreach(DreamDataModel dataDream in dataDreams)
+            DreamDataControllerFactory dataControllerFactory = new();
+            IDreamDataController dreamDataController = dataControllerFactory.DreamDataController();
+            List<DreamDataModel> dataDreams = dreamDataController.GetDreams();
+            List<DreamLogicModel> logicDreams = new();
+            foreach (var dataDream in dataDreams)
             {
-                DreamLogicModel logicDream = new(dataDream.Id, dataDream.UserId, dataDream.Title, dataDream.Story);
-                returnList.Add(logicDream);
+                DreamLogicModel newLogicDream = new DreamLogicModel(dataDream.Id, dataDream.UserId, dataDream.Title, dataDream.Story);
+                logicDreams.Add(newLogicDream);
             }
-            return returnList;
+            return logicDreams;
         }
     }
 }

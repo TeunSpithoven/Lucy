@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Data.Containers;
 
 namespace Data.Controllers
 {
@@ -16,10 +17,9 @@ namespace Data.Controllers
             DreamDataContainer.Items.Add(dataDream);
         }
 
-        public void RemoveDream(DreamDataModel logicDream)
+        public void RemoveDream(int id)
         {
-            DreamDataModel dataDream = new DreamDataModel(logicDream.Id, logicDream.UserId, logicDream.Title, logicDream.Story);
-            DreamDataContainer.Items.Remove(dataDream);
+            DreamDataContainer.Items.RemoveAll(x => x.Id == id);
         }
 
         public List<DreamDataModel> GetDreams()

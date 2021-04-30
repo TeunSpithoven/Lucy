@@ -10,7 +10,7 @@ namespace Data.Interfaces
     public interface IDreamDataController
     {
         public void AddDream(DreamDataModel logicDream);
-        public void RemoveDream(DreamDataModel logicDream);
+        public void RemoveDream(int id);
         public List<DreamDataModel> GetDreams();
     }
 }
