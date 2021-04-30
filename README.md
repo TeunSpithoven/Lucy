@@ -1,0 +1,2 @@
+# Lucy
+school project
