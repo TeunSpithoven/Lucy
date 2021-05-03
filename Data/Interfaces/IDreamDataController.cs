@@ -9,8 +9,10 @@ namespace Data.Interfaces
 {
     public interface IDreamDataController
     {
-        public void AddDream(DreamDataModel logicDream);
-        public void RemoveDream(int id);
-        public List<DreamDataModel> GetDreams();
+        public void AddDreamToDB(DreamDataModel logicDream);
+        public void RemoveDreamByIdFromDB(int id);
+        public List<DreamDataModel> GetDreamsFromDB();
+        public List<DreamDataModel> GetDreamsByUserIdFromDB(int userId);
+        public DreamDataModel GetDreamById(int id);
     }
 }
