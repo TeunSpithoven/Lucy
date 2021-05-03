@@ -13,5 +13,7 @@ namespace Logic.Interfaces
         public void AddDream(DreamLogicModel viewDream);
         public void RemoveDream(int id);
         public List<DreamLogicModel> GetDreams();
+        public List<DreamLogicModel> GetDreamsByUserId(int userId);
+        public DreamLogicModel GetDreamById(int id);
     }
 }

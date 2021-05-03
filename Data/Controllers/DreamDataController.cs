@@ -89,6 +89,7 @@ namespace Data.Controllers
             query.Parameters.AddWithValue("@Id", id);
             var reader = query.ExecuteReader();
 
+            reader.Read();
             // pakt voor alle dromen in de database uit de kolommen de data en zet die om naar een object.
             int newDreamId = Convert.ToInt32(reader["Id"]);
             int newDreamUserId = Convert.ToInt32(reader["UserId"]);
@@ -110,7 +111,5 @@ namespace Data.Controllers
             query.Parameters.AddWithValue("@id", id);
             query.ExecuteNonQuery();
         }
-
-        
     }
 }
