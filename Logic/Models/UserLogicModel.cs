@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace View.Models
+namespace Logic.Models
 {
-    public class UserViewModel
+    public class UserLogicModel
     {
         public int Id { get; set; }
         public string Username { get; private set; }
         public string Password { get; private set; }
         public bool LoggedIn { get; set; }
 
-        public UserViewModel(int id, string username, string password, bool loggedIn)
+        public UserLogicModel(int id, string username, string password, bool loggedIn)
         {
             Id = id;
             Username = username;
