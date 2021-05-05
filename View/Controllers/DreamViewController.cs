@@ -24,7 +24,7 @@ namespace View.Controllers
             List<DreamLogicModel> logicDreams = dreamLogicController.GetDreams();
             foreach (var logicDream in logicDreams)
             {
-                DreamViewModel newViewDream = new(logicDream.Id, logicDream.UserId, logicDream.Title, logicDream.Story);
+                DreamViewModel newViewDream = new(logicDream.Id, logicDream.UserId, logicDream.Title, logicDream.Story, logicDream.CreationDateTime);
                 viewDreams.Add(newViewDream);
             }
             return View(viewDreams);
@@ -84,7 +84,7 @@ namespace View.Controllers
             DreamLogicControllerFactory dreamLogicControllerFactory = new();
             IDreamLogicController dreamLogicController = dreamLogicControllerFactory.DreamLogicController();
             DreamLogicModel dataDream = dreamLogicController.GetDreamById(id);
-            DreamViewModel viewDream = new(dataDream.Id, dataDream.UserId, dataDream.Title, dataDream.Story);
+            DreamViewModel viewDream = new(dataDream.Id, dataDream.UserId, dataDream.Title, dataDream.Story, dataDream.CreationDateTime);
             return View(viewDream);
         }
     }

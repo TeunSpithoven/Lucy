@@ -14,11 +14,11 @@ namespace Logic.Controllers
 {
     public class DreamLogicController : IDreamLogicController
     {
-        public void AddDream(DreamLogicModel viewDream)
+        public void AddDream(DreamLogicModel logicDream)
         {
             DreamDataControllerFactory dataControllerFactory = new();
             IDreamDataController dreamDataController = dataControllerFactory.DreamDataController();
-            DreamDataModel dataDream = new(viewDream.Id, viewDream.UserId, viewDream.Title, viewDream.Story);
+            DreamDataModel dataDream = new(logicDream.Id, logicDream.UserId, logicDream.Title, logicDream.Story, logicDream.CreationDateTime);
             dreamDataController.AddDreamToDB(dataDream);
         }
 
@@ -37,7 +37,7 @@ namespace Logic.Controllers
             List<DreamLogicModel> logicDreams = new();
             foreach (var dataDream in dataDreams)
             {
-                DreamLogicModel newLogicDream = new DreamLogicModel(dataDream.Id, dataDream.UserId, dataDream.Title, dataDream.Story);
+                DreamLogicModel newLogicDream = new DreamLogicModel(dataDream.Id, dataDream.UserId, dataDream.Title, dataDream.Story, dataDream.CreationDateTime);
                 logicDreams.Add(newLogicDream);
             }
             return logicDreams;
@@ -51,7 +51,7 @@ namespace Logic.Controllers
             List<DreamLogicModel> logicDreams = new();
             foreach (var dataDream in dataDreams)
             {
-                DreamLogicModel newLogicDream = new DreamLogicModel(dataDream.Id, dataDream.UserId, dataDream.Title, dataDream.Story);
+                DreamLogicModel newLogicDream = new DreamLogicModel(dataDream.Id, dataDream.UserId, dataDream.Title, dataDream.Story, dataDream.CreationDateTime);
                 logicDreams.Add(newLogicDream);
             }
             return logicDreams;
@@ -62,7 +62,7 @@ namespace Logic.Controllers
             DreamDataControllerFactory dataControllerFactory = new();
             IDreamDataController dreamDataController = dataControllerFactory.DreamDataController();
             DreamDataModel dataDream = dreamDataController.GetDreamById(id);
-            DreamLogicModel logicDream = new(dataDream.Id, dataDream.UserId, dataDream.Title, dataDream.Story);
+            DreamLogicModel logicDream = new(dataDream.Id, dataDream.UserId, dataDream.Title, dataDream.Story, dataDream.CreationDateTime);
             return logicDream;
         }
     }

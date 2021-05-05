@@ -17,7 +17,6 @@ namespace Data.Controllers
 
             //database connectie openen
             conn.Open();
-            // query.Parameters.AddWithValue("@Id", dataDream.Id);
             query.Parameters.AddWithValue("@UserId", dataDream.UserId);
             query.Parameters.AddWithValue("@CreationDate", now);
             query.Parameters.AddWithValue("@Title", dataDream.Title);
@@ -41,11 +40,11 @@ namespace Data.Controllers
                 // pakt voor alle dromen in de database uit de kolommen de data en zet die om naar een object.
                 int newDreamId = Convert.ToInt32(reader["Id"]);
                 int newDreamUserId = Convert.ToInt32(reader["UserId"]);
-                // DateTime newDreamUserDateTime = Convert.ToDateTime(reader["CreationDateTime"]);
+                DateTime newDreamDateTime = Convert.ToDateTime(reader["CreationDate"]);
                 string newDreamTitle = reader["Title"].ToString();
                 string newDreamStory = reader["Story"].ToString();
 
-                DreamDataModel newDream = new DreamDataModel(newDreamId, newDreamUserId, newDreamTitle, newDreamStory);
+                DreamDataModel newDream = new DreamDataModel(newDreamId, newDreamUserId, newDreamTitle, newDreamStory, newDreamDateTime);
 
                 // voegd die droom toe aan de lijst
                 returnList.Add(newDream);
@@ -67,11 +66,11 @@ namespace Data.Controllers
                 // pakt voor alle dromen in de database uit de kolommen de data en zet die om naar een object.
                 int newDreamId = Convert.ToInt32(reader["Id"]);
                 int newDreamUserId = Convert.ToInt32(reader["UserId"]);
-                // DateTime newDreamUserDateTime = Convert.ToDateTime(reader["CreationDateTime"]);
+                DateTime newDreamDateTime = Convert.ToDateTime(reader["CreationDate"]);
                 string newDreamTitle = reader["Title"].ToString();
                 string newDreamStory = reader["Story"].ToString();
 
-                DreamDataModel newDream = new DreamDataModel(newDreamId, newDreamUserId, newDreamTitle, newDreamStory);
+                DreamDataModel newDream = new DreamDataModel(newDreamId, newDreamUserId, newDreamTitle, newDreamStory, newDreamDateTime);
 
                 // voegd die droom toe aan de lijst
                 returnList.Add(newDream);
@@ -93,11 +92,11 @@ namespace Data.Controllers
             // pakt voor alle dromen in de database uit de kolommen de data en zet die om naar een object.
             int newDreamId = Convert.ToInt32(reader["Id"]);
             int newDreamUserId = Convert.ToInt32(reader["UserId"]);
-            // DateTime newDreamUserDateTime = Convert.ToDateTime(reader["CreationDateTime"]);
+            DateTime newDreamDateTime = Convert.ToDateTime(reader["CreationDate"]);
             string newDreamTitle = reader["Title"].ToString();
             string newDreamStory = reader["Story"].ToString();
 
-            DreamDataModel newDream = new DreamDataModel(newDreamId, newDreamUserId, newDreamTitle, newDreamStory);
+            DreamDataModel newDream = new DreamDataModel(newDreamId, newDreamUserId, newDreamTitle, newDreamStory, newDreamDateTime);
             return newDream;
         }
 
