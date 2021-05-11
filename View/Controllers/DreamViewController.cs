@@ -9,6 +9,7 @@ using Logic.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using View.Mappers;
 using View.Models;
 
 namespace View.Controllers
@@ -24,7 +25,7 @@ namespace View.Controllers
             List<DreamLogicModel> logicDreams = dreamLogicController.GetDreams();
             foreach (var logicDream in logicDreams)
             {
-                DreamViewModel newViewDream = new(logicDream.Id, logicDream.UserId, logicDream.Title, logicDream.Story, logicDream.CreationDateTime);
+                DreamViewModel newViewDream = DreamViewMapper.LogicToViewDreamModel(logicDream);
                 viewDreams.Add(newViewDream);
             }
             return View(viewDreams);
@@ -83,8 +84,8 @@ namespace View.Controllers
         {
             DreamLogicControllerFactory dreamLogicControllerFactory = new();
             IDreamLogicController dreamLogicController = dreamLogicControllerFactory.DreamLogicController();
-            DreamLogicModel dataDream = dreamLogicController.GetDreamById(id);
-            DreamViewModel viewDream = new(dataDream.Id, dataDream.UserId, dataDream.Title, dataDream.Story, dataDream.CreationDateTime);
+            DreamLogicModel logicDream = dreamLogicController.GetDreamById(id);
+            DreamViewModel viewDream = DreamViewMapper.LogicToViewDreamModel(logicDream);
             return View(viewDream);
         }
     }
