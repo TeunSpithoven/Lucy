@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Data.Controllers;
+﻿using Data;
 using Data.Models;
+using Data.SqlData;
 using Logic.Models;
 
-namespace Logic.Controllers
+namespace Logic
 {
-    public class UserLogicController
+    public class UserLogic
     {
         public bool IsLoggedIn(UserLogicModel logicUser)
         {
             UserDataModel dataUser = new(logicUser.Id, logicUser.Username, logicUser.Password, logicUser.LoggedIn);
-            UserDataController d = new();
+            UserSqlData d = new();
             bool isLoggedIn = d.IsLoggedIn(dataUser);
             return isLoggedIn;
         }

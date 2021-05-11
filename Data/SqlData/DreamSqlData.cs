@@ -1,15 +1,15 @@
-﻿using Data.Interfaces;
-using Data.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using Data.Interfaces;
+using Data.Models;
 
-namespace Data.Controllers
+namespace Data.SqlData
 {
-    public class DreamDataController : IDreamDataController
+    public class DreamSqlData : IDreamData
     {
         // CREATE
-        public void AddDreamToDB(DreamDataModel dataDream)
+        public void AddDream(DreamDataModel dataDream)
         {
             using SqlConnection conn = new(DataBaseConnection.String);
             using SqlCommand query = new("INSERT INTO Dream (UserId, CreationDate, Title, Story) VALUES (@UserId, @CreationDate, @Title, @Story)", conn);
@@ -25,7 +25,7 @@ namespace Data.Controllers
         }
 
         // READ
-        public List<DreamDataModel> GetDreamsFromDB()
+        public List<DreamDataModel> GetDreams()
         {
             List<DreamDataModel> returnList = new();
 
@@ -52,7 +52,7 @@ namespace Data.Controllers
             return returnList;
         }
 
-        public List<DreamDataModel> GetDreamsByUserIdFromDB(int userId)
+        public List<DreamDataModel> GetDreamsByUserId(int userId)
         {
             List<DreamDataModel> returnList = new();
             using SqlConnection conn = new(DataBaseConnection.String);
@@ -101,7 +101,7 @@ namespace Data.Controllers
         }
 
         // DELETE
-        public void RemoveDreamByIdFromDB(int id)
+        public void RemoveDreamById(int id)
         {
             using SqlConnection conn = new(DataBaseConnection.String);
             using SqlCommand query = new("DELETE FROM Dream WHERE ID = @id;", conn);

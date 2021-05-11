@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Logic.Controllers;
+using Data.Interfaces;
 using Logic.Interfaces;
 
 namespace Logic.Factories
 {
-    public class DreamLogicControllerFactory
+    public class DreamLogicFactory
     {
-        public IDreamLogicController DreamLogicController()
+        public IDreamLogic DreamLogic(IDreamData dreamData)
         {
-            return new DreamLogicController();
+            return new DreamLogic(dreamData);
         }
     }
 }

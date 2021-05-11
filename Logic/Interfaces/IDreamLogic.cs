@@ -8,7 +8,7 @@ using Logic.Models;
 
 namespace Logic.Interfaces
 {
-    public interface IDreamLogicController
+    public interface IDreamLogic
     {
         public void AddDream(DreamLogicModel viewDream);
         public void RemoveDream(int id);

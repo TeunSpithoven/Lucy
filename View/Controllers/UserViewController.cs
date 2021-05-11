@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Logic.Controllers;
+using Logic;
 using Logic.Models;
 using View.Models;
 
@@ -14,7 +14,7 @@ namespace View.Controllers
         public bool IsLoggedIn(UserViewModel viewUser)
         {
             UserLogicModel logicUser = new(viewUser.Id, viewUser.Username, viewUser.Password, viewUser.LoggedIn);
-            UserLogicController d = new();
+            UserLogic d = new();
             bool isLoggedIn = d.IsLoggedIn(logicUser);
             return isLoggedIn;
         }
