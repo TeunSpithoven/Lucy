@@ -42,6 +42,7 @@ namespace TestProject2
             Assert.AreNotEqual(0, amountOfDreamsInMemory);
 
             DreamDataModel firstDreamInMemory = DreamDataContainer.Items.First();
+
             Assert.AreEqual(dataDream.Id, firstDreamInMemory.Id);
             Assert.AreEqual(dataDream.UserId, firstDreamInMemory.UserId);
             Assert.AreEqual(dataDream.Title, firstDreamInMemory.Title);
