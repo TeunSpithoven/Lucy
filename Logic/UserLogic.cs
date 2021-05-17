@@ -1,18 +1,15 @@
-﻿using Data;
-using Data.Models;
-using Data.SqlData;
-using Logic.Models;
+﻿using Logic.Models;
 
 namespace Logic
 {
     public class UserLogic
     {
-        public bool IsLoggedIn(UserLogicModel logicUser)
-        {
-            UserDataModel dataUser = new(logicUser.Id, logicUser.Username, logicUser.Password, logicUser.LoggedIn);
-            UserSqlData d = new();
-            bool isLoggedIn = d.IsLoggedIn(dataUser);
-            return isLoggedIn;
-        }
+        // public bool IsLoggedIn(UserLogicModel logicUser)
+        // {
+        //     UserDataModel dataUser = new(logicUser.Id, logicUser.Username, logicUser.Password, logicUser.LoggedIn);
+        //     UserSqlData d = new();
+        //     bool isLoggedIn = d.IsLoggedIn(dataUser);
+        //     return isLoggedIn;
+        // }
     }
 }

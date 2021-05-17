@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "..\Data\Data.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Objects", "..\Objects\Objects.csproj", "{80EBA1D7-E2F7-4C86-8154-53DF2607B4A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "..\Test\Test.csproj", "{06304374-4127-4AEE-AD1F-0CB1BDBC6BD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "..\Test\Test.csproj", "{06304374-4127-4AEE-AD1F-0CB1BDBC6BD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicDataConnector", "..\LogicDataConnector\LogicDataConnector.csproj", "{F9D11397-9C6C-44DB-981D-16409E022979}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Factories", "..\Factories\Factories.csproj", "{5F7C7A34-9700-4F9C-B487-C53E6BA5642D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{06304374-4127-4AEE-AD1F-0CB1BDBC6BD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06304374-4127-4AEE-AD1F-0CB1BDBC6BD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06304374-4127-4AEE-AD1F-0CB1BDBC6BD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9D11397-9C6C-44DB-981D-16409E022979}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9D11397-9C6C-44DB-981D-16409E022979}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9D11397-9C6C-44DB-981D-16409E022979}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9D11397-9C6C-44DB-981D-16409E022979}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F7C7A34-9700-4F9C-B487-C53E6BA5642D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F7C7A34-9700-4F9C-B487-C53E6BA5642D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F7C7A34-9700-4F9C-B487-C53E6BA5642D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F7C7A34-9700-4F9C-B487-C53E6BA5642D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,7 +9,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LogicDataConnector\LogicDataConnector.csproj" />
     <ProjectReference Include="..\Objects\Objects.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Factories\" />
   </ItemGroup>
 
 </Project>

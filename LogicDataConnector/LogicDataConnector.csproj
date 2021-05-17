@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LogicDataConnector\LogicDataConnector.csproj" />
     <ProjectReference Include="..\Objects\Objects.csproj" />
   </ItemGroup>
 

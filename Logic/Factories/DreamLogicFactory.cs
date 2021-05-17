@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Data.Interfaces;
-using Logic.Interfaces;
+﻿using Logic.Interfaces;
+using LogicDataConnector.Interfaces;
 
 namespace Logic.Factories
 {
     public class DreamLogicFactory
     {
-        public IDreamLogic DreamLogic(IDreamData dreamData)
+        public IDreamLogic DreamLogic(IDreamConnector dreamData)
         {
             return new DreamLogic(dreamData);
         }

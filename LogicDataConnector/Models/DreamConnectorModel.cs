@@ -1,9 +1,9 @@
 ﻿using System;
 using Objects;
 
-namespace Logic.Models
+namespace LogicDataConnector.Models
 {
-    public class DreamLogicModel : Dream
+    public class DreamConnectorModel : Dream
     {
         public new int Id { get; private set; }
         public new int UserId { get; private set; }
@@ -11,7 +11,7 @@ namespace Logic.Models
         public new string Story { get; private set; }
         public new DateTime CreationDateTime { get; private set; }
 
-        public DreamLogicModel(int id, int userId, string title, string story, DateTime creationDateTime)
+        public DreamConnectorModel(int id, int userId, string title, string story, DateTime creationDateTime)
         {
             Id = id;
             UserId = userId;
@@ -19,7 +19,7 @@ namespace Logic.Models
             Story = story;
             CreationDateTime = creationDateTime;
         }
-        public DreamLogicModel(int id, int userId, string title, string story)
+        public DreamConnectorModel(int id, int userId, string title, string story)
         {
             Id = id;
             UserId = userId;

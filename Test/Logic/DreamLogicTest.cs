@@ -1,17 +1,16 @@
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using Data.Containers;
-using Data.Factories;
-using Data.Interfaces;
 using Data.Models;
 using Logic.Factories;
 using Logic.Interfaces;
 using Logic.Mappers;
 using Logic.Models;
+using LogicDataConnector.Factories;
+using LogicDataConnector.Interfaces;
+using LogicDataConnector.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace TestProject2
+namespace Test.Logic
 {
     [TestClass]
     public class DreamLogicTest
@@ -22,7 +21,7 @@ namespace TestProject2
             //arrange
             DreamLogicFactory logicFactory = new();
             DreamDataFactory dataFactory = new();
-            IDreamData dreamData = dataFactory.DreamMemData();
+            IDreamConnector dreamData = dataFactory.DreamMemData();
             DreamDataContainer.Items.Clear();
 
             int id = 5;
@@ -30,7 +29,7 @@ namespace TestProject2
             string title = "Title of the test logicDream";
             string story = "Story of the test logicDream";
             DreamLogicModel logicDream = new(id, userId, title, story);
-            DreamDataModel dataDream = DreamLogicMapper.LogicToDataDreamModel(logicDream);
+            DreamConnectorModel conDream = DreamLogicMapper.LogicToConnectorDreamModel(logicDream);
 
             IDreamLogic dreamLogic = logicFactory.DreamLogic(dreamData);
 
@@ -43,10 +42,10 @@ namespace TestProject2
 
             DreamDataModel firstDreamInMemory = DreamDataContainer.Items.First();
 
-            Assert.AreEqual(dataDream.Id, firstDreamInMemory.Id);
-            Assert.AreEqual(dataDream.UserId, firstDreamInMemory.UserId);
-            Assert.AreEqual(dataDream.Title, firstDreamInMemory.Title);
-            Assert.AreEqual(dataDream.Story, firstDreamInMemory.Story);
+            Assert.AreEqual(conDream.Id, firstDreamInMemory.Id);
+            Assert.AreEqual(conDream.UserId, firstDreamInMemory.UserId);
+            Assert.AreEqual(conDream.Title, firstDreamInMemory.Title);
+            Assert.AreEqual(conDream.Story, firstDreamInMemory.Story);
         }
     }
 }

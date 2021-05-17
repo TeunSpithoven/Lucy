@@ -1,25 +1,24 @@
 ﻿using System.Collections.Generic;
-using Data.Factories;
-using Data.Interfaces;
-using Data.Models;
 using Logic.Interfaces;
 using Logic.Mappers;
 using Logic.Models;
+using LogicDataConnector.Interfaces;
+using LogicDataConnector.Models;
 
 namespace Logic
 {
     public class DreamLogic : IDreamLogic
     {
-        public IDreamData DreamData;
-        public DreamLogic(IDreamData dreamData)
+        public IDreamConnector DreamData;
+        public DreamLogic(IDreamConnector dreamData)
         {
             DreamData = dreamData;
         }
 
         public void AddDream(DreamLogicModel logicDream)
         {
-            DreamDataModel dataDream = DreamLogicMapper.LogicToDataDreamModel(logicDream);
-            DreamData.AddDream(dataDream);
+            DreamConnectorModel conDream = DreamLogicMapper.LogicToConnectorDreamModel(logicDream);
+            DreamData.AddDream(conDream);
         }
 
         public void RemoveDream(int id)
@@ -29,11 +28,11 @@ namespace Logic
 
         public List<DreamLogicModel> GetDreams()
         {
-            List<DreamDataModel> dataDreams = DreamData.GetDreams();
+            List<DreamConnectorModel> conDreams = DreamData.GetDreams();
             List<DreamLogicModel> logicDreams = new();
-            foreach (var dataDream in dataDreams)
+            foreach (var conDream in conDreams)
             {
-                DreamLogicModel newLogicDream = DreamLogicMapper.DataToLogicDreamModel(dataDream);
+                DreamLogicModel newLogicDream = DreamLogicMapper.ConnectorToLogicDreamModel(conDream);
                 logicDreams.Add(newLogicDream);
             }
             return logicDreams;
@@ -41,11 +40,11 @@ namespace Logic
 
         public List<DreamLogicModel> GetDreamsByUserId(int userId)
         {
-            List<DreamDataModel> dataDreams = DreamData.GetDreamsByUserId(userId);
+            List<DreamConnectorModel> conDreams = DreamData.GetDreamsByUserId(userId);
             List<DreamLogicModel> logicDreams = new();
-            foreach (var dataDream in dataDreams)
+            foreach (var conDream in conDreams)
             {
-                DreamLogicModel newLogicDream = DreamLogicMapper.DataToLogicDreamModel(dataDream);
+                DreamLogicModel newLogicDream = DreamLogicMapper.ConnectorToLogicDreamModel(conDream);
                 logicDreams.Add(newLogicDream);
             }
             return logicDreams;
@@ -53,8 +52,8 @@ namespace Logic
 
         public DreamLogicModel GetDreamById(int id)
         {
-            DreamDataModel dataDream = DreamData.GetDreamById(id);
-            DreamLogicModel logicDream = DreamLogicMapper.DataToLogicDreamModel(dataDream);
+            DreamConnectorModel conDream = DreamData.GetDreamById(id);
+            DreamLogicModel logicDream = DreamLogicMapper.ConnectorToLogicDreamModel(conDream);
             return logicDream;
         }
     }

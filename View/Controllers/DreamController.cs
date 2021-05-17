@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Data.Factories;
-using Data.Interfaces;
-using Data.Models;
-using Logic;
+﻿using System.Collections.Generic;
 using Logic.Factories;
 using Logic.Interfaces;
 using Logic.Models;
+using LogicDataConnector.Factories;
+using LogicDataConnector.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using View.Mappers;
 using View.Models;
 
@@ -21,7 +14,7 @@ namespace View.Controllers
     {
         private readonly DreamLogicFactory _logicFactory = new();
         private readonly DreamDataFactory _dataFactory = new();
-        private IDreamData _dreamData;
+        private IDreamConnector _dreamData;
 
         // view with all dreams in database
         public IActionResult Index()
@@ -76,8 +69,8 @@ namespace View.Controllers
         public IActionResult Delete(int id)
         {
             _dreamData = _dataFactory.DreamSqlData();
-            IDreamLogic dreamLogicController = _logicFactory.DreamLogic(_dreamData);
-            dreamLogicController.RemoveDream(id);
+            IDreamLogic dreamLogic = _logicFactory.DreamLogic(_dreamData);
+            dreamLogic.RemoveDream(id);
 
             return RedirectToAction(nameof(Index));
         }

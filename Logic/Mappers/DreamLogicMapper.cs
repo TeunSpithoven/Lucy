@@ -1,26 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Data.Models;
-using Logic.Models;
+﻿using Logic.Models;
+using LogicDataConnector.Models;
 
 namespace Logic.Mappers
 {
     public static class DreamLogicMapper
     {
-        public static DreamDataModel LogicToDataDreamModel(DreamLogicModel logicDream)
+        public static DreamConnectorModel LogicToConnectorDreamModel(DreamLogicModel logicDream)
         {
-            DreamDataModel dataDream;
-            dataDream = new(logicDream.Id, logicDream.UserId, logicDream.Title, logicDream.Story, logicDream.CreationDateTime);
-            return dataDream;
+            DreamConnectorModel conDream;
+            conDream = new(logicDream.Id, logicDream.UserId, logicDream.Title, logicDream.Story, logicDream.CreationDateTime);
+            return conDream;
         }
 
-        public static DreamLogicModel DataToLogicDreamModel(DreamDataModel dataDream)
+        public static DreamLogicModel ConnectorToLogicDreamModel(DreamConnectorModel conDream)
         {
             DreamLogicModel logicDream;
-            logicDream = new DreamLogicModel(dataDream.Id, dataDream.UserId, dataDream.Title, dataDream.Story, dataDream.CreationDateTime);
+            logicDream = new DreamLogicModel(conDream.Id, conDream.UserId, conDream.Title, conDream.Story, conDream.CreationDateTime);
             return logicDream;
         }
     }
