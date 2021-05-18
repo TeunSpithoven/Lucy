@@ -45,7 +45,7 @@ namespace Data.SqlData
                 string newDreamTitle = reader["Title"].ToString();
                 string newDreamStory = reader["Story"].ToString();
 
-                DreamConnectorModel newDream = new DreamConnectorModel(newDreamId, newDreamUserId, newDreamTitle, newDreamStory, newDreamDateTime);
+                DreamConnectorModel newDream = new(newDreamId, newDreamUserId, newDreamTitle, newDreamStory, newDreamDateTime);
 
                 // voegd die droom toe aan de lijst
                 returnList.Add(newDream);
@@ -71,7 +71,7 @@ namespace Data.SqlData
                 string newDreamTitle = reader["Title"].ToString();
                 string newDreamStory = reader["Story"].ToString();
 
-                DreamConnectorModel newDream = new DreamConnectorModel(newDreamId, newDreamUserId, newDreamTitle, newDreamStory, newDreamDateTime);
+                DreamConnectorModel newDream = new(newDreamId, newDreamUserId, newDreamTitle, newDreamStory, newDreamDateTime);
 
                 // voegd die droom toe aan de lijst
                 returnList.Add(newDream);
@@ -97,7 +97,7 @@ namespace Data.SqlData
             string newDreamTitle = reader["Title"].ToString();
             string newDreamStory = reader["Story"].ToString();
 
-            DreamConnectorModel newDream = new DreamConnectorModel(newDreamId, newDreamUserId, newDreamTitle, newDreamStory, newDreamDateTime);
+            DreamConnectorModel newDream = new(newDreamId, newDreamUserId, newDreamTitle, newDreamStory, newDreamDateTime);
             return newDream;
         }
 
