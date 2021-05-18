@@ -7,7 +7,7 @@ using LogicDataConnector.Models;
 
 namespace Data.MemData
 {
-    public class DreamMemData : IDreamConnector
+    public class DreamMemData : IDreamData
     {
         public void AddDream(DreamConnectorModel conDream)
         {

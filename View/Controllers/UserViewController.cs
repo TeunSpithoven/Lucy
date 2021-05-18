@@ -1,7 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Logic;
-using Logic.Models;
-using View.Models;
 
 namespace View.Controllers
 {

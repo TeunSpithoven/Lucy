@@ -3,7 +3,7 @@ using LogicDataConnector.Models;
 
 namespace LogicDataConnector.Interfaces
 {
-    public interface IDreamConnector
+    public interface IDreamData
     {
         public void AddDream(DreamConnectorModel dataDream);
         public void RemoveDreamById(int id);

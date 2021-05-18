@@ -1,6 +1,4 @@
-﻿using Logic.Models;
-
-namespace Logic
+﻿namespace Logic
 {
     public class UserLogic
     {

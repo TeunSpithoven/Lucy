@@ -9,10 +9,10 @@ namespace Logic
 {
     public class DreamLogic : IDreamLogic
     {
-        public IDreamConnector DreamData;
-        public DreamLogic(IDreamConnector dreamData)
+        private readonly IDreamData DreamData;
+        public DreamLogic(IDreamData dreamConnector)
         {
-            DreamData = dreamData;
+            DreamData = dreamConnector;
         }
 
         public void AddDream(DreamLogicModel logicDream)

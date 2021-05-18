@@ -5,7 +5,7 @@ namespace Logic.Factories
 {
     public class DreamLogicFactory
     {
-        public IDreamLogic DreamLogic(IDreamConnector dreamData)
+        public IDreamLogic DreamLogic(IDreamData dreamData)
         {
             return new DreamLogic(dreamData);
         }

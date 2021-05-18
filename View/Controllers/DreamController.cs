@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using Logic.Factories;
 using Logic.Interfaces;
 using Logic.Models;
-using LogicDataConnector.Factories;
 using LogicDataConnector.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using View.Mappers;
@@ -12,17 +10,17 @@ namespace View.Controllers
 {
     public class DreamController : Controller
     {
-        private readonly DreamLogicFactory _logicFactory = new();
-        private readonly DreamDataFactory _dataFactory = new();
-        private IDreamConnector _dreamData;
+        private readonly IDreamLogic _dreamLogic;
+
+        public DreamController( IDreamLogic dreamLogic)
+        {
+            _dreamLogic = dreamLogic;
+        }
 
         // view with all dreams in database
         public IActionResult Index()
         {
-            _dreamData = _dataFactory.DreamSqlData();
-            IDreamLogic dreamLogicController = _logicFactory.DreamLogic(_dreamData);
-
-            List<DreamLogicModel> logicDreams = dreamLogicController.GetDreams();
+            List<DreamLogicModel> logicDreams = _dreamLogic.GetDreams();
             List<DreamViewModel> viewDreams = new();
             
             foreach (var logicDream in logicDreams)
@@ -58,20 +56,15 @@ namespace View.Controllers
         [HttpPost]
         public IActionResult Create(int id, int userId, string title, string story)
         {
-            _dreamData = _dataFactory.DreamSqlData();
-            IDreamLogic dreamLogicController = _logicFactory.DreamLogic(_dreamData);
             DreamLogicModel logicDream = new(id, userId, title, story);
-            dreamLogicController.AddDream(logicDream);
+            _dreamLogic.AddDream(logicDream);
             return RedirectToAction(nameof(Index));
         }
 
         // deletes dream
         public IActionResult Delete(int id)
         {
-            _dreamData = _dataFactory.DreamSqlData();
-            IDreamLogic dreamLogic = _logicFactory.DreamLogic(_dreamData);
-            dreamLogic.RemoveDream(id);
-
+            _dreamLogic.RemoveDream(id);
             return RedirectToAction(nameof(Index));
         }
 
@@ -84,9 +77,7 @@ namespace View.Controllers
         // view for details of specific dream
         public IActionResult Details(int id)
         {
-            _dreamData = _dataFactory.DreamSqlData();
-            IDreamLogic dreamLogicController = _logicFactory.DreamLogic(_dreamData);
-            DreamLogicModel logicDream = dreamLogicController.GetDreamById(id);
+            DreamLogicModel logicDream = _dreamLogic.GetDreamById(id);
             DreamViewModel viewDream = DreamViewMapper.LogicToViewDreamModel(logicDream);
             return View(viewDream);
         }

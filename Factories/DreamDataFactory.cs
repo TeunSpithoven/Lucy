@@ -6,12 +6,12 @@ namespace LogicDataConnector.Factories
 {
     public class DreamDataFactory
     {
-        public IDreamConnector DreamSqlData()
+        public IDreamData DreamSqlData()
         {
             return new DreamSqlData();
         }
 
-        public IDreamConnector DreamMemData()
+        public IDreamData DreamMemData()
         {
             return new DreamMemData();
         }

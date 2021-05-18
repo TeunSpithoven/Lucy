@@ -1,9 +1,7 @@
 ﻿using System;
-using LogicDataConnector.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace View.Migrations
 {
@@ -12,7 +10,6 @@ namespace View.Migrations
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
-#pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.4")
@@ -41,7 +38,6 @@ namespace View.Migrations
 
                 b.ToTable("Dream");
             });
-#pragma warning restore 612, 618
         }
     }
 }

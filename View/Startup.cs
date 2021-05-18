@@ -1,4 +1,7 @@
-﻿using LogicDataConnector.Interfaces;
+﻿using Data.SqlData;
+using Logic;
+using Logic.Interfaces;
+using LogicDataConnector.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +23,9 @@ namespace View
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IDreamData, DreamSqlData>();
+            services.AddScoped<IDreamLogic, DreamLogic>();
+
             // configuration van de databaseconnectie in startup
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
