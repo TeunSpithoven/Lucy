@@ -1,5 +1,6 @@
 using System.Linq;
 using Data.Containers;
+using Data.Mappers;
 using Data.MemData;
 using Data.Models;
 using Logic;
@@ -45,6 +46,64 @@ namespace Test.Logic
             Assert.AreEqual(conDream.UserId, firstDreamInMemory.UserId);
             Assert.AreEqual(conDream.Title, firstDreamInMemory.Title);
             Assert.AreEqual(conDream.Story, firstDreamInMemory.Story);
+        }
+
+        [TestMethod]
+        public void RemoveDream_Success()
+        {
+            //arrange
+            DreamMemData dreamMemData = new();
+            IDreamData dreamConnector = dreamMemData;
+            DreamLogic dreamLogic = new(dreamConnector);
+            IDreamLogic iDreamLogic = dreamLogic;
+            DreamDataContainer.Items.Clear();
+
+            int id = 5;
+            int userId = 2;
+            string title = "Title of the test logicDream";
+            string story = "Story of the test logicDream";
+            DreamLogicModel logicDream = new(id, userId, title, story);
+            DreamConnectorModel conDream = DreamLogicMapper.LogicToConnectorDreamModel(logicDream);
+            DreamDataModel dataDream = DreamDataMapper.DreamConnectorToDataModel(conDream);
+            DreamDataContainer.Items.Add(dataDream);
+
+            //act
+            iDreamLogic.RemoveDream(5);
+
+            //assert
+            Assert.AreEqual(0, DreamDataContainer.Items.Count);
+        }
+
+        [TestMethod]
+        public void RemoveDream_Failed()
+        {
+            //arrange
+            DreamMemData dreamMemData = new();
+            IDreamData dreamConnector = dreamMemData;
+            DreamLogic dreamLogic = new(dreamConnector);
+            IDreamLogic iDreamLogic = dreamLogic;
+            DreamDataContainer.Items.Clear();
+
+            int id = 5;
+            int userId = 2;
+            string title = "Title of the test logicDream";
+            string story = "Story of the test logicDream";
+            DreamLogicModel logicDream = new(id, userId, title, story);
+            DreamConnectorModel conDream = DreamLogicMapper.LogicToConnectorDreamModel(logicDream);
+            DreamDataModel dataDream = DreamDataMapper.DreamConnectorToDataModel(conDream);
+            DreamDataContainer.Items.Add(dataDream);
+
+            //act
+            iDreamLogic.RemoveDream(4);
+
+            //assert
+            Assert.AreEqual(1, DreamDataContainer.Items.Count);
+        }
+
+        [TestMethod]
+        public void GetDreams_Success()
+        {
+
         }
     }
 }
