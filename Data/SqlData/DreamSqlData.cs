@@ -13,15 +13,15 @@ namespace Data.SqlData
         public void AddDream(DreamConnectorModel dataDream)
         {
             using SqlConnection conn = new(DataBaseConnection.String);
-            using SqlCommand query = new("INSERT INTO Dream (UserId, CreationDate, Title, Story) VALUES (@UserId, @CreationDate, @Title, @Story)", conn);
+            using SqlCommand query = new("INSERT INTO Dream (UserId, Title, Story, CreationDateTime) VALUES (@UserId, @Title, @Story, @CreationDateTime)", conn);
             DateTime now = DateTime.Now;
 
             //database connectie openen
             conn.Open();
             query.Parameters.AddWithValue("@UserId", dataDream.UserId);
-            query.Parameters.AddWithValue("@CreationDate", now);
             query.Parameters.AddWithValue("@Title", dataDream.Title);
             query.Parameters.AddWithValue("@Story", dataDream.Story);
+            query.Parameters.AddWithValue("@CreationDateTime", now);
             query.ExecuteNonQuery();
         }
 
@@ -31,7 +31,7 @@ namespace Data.SqlData
             List<DreamConnectorModel> returnList = new();
 
             using SqlConnection conn = new(DataBaseConnection.String);
-            using SqlCommand query = new("select Id, UserId, CreationDate, Title, Story from Dream", conn);
+            using SqlCommand query = new("select Id, UserId, Title, Story, CreationDateTime from Dream", conn);
             //database connectie openen
             conn.Open();
 
@@ -41,9 +41,9 @@ namespace Data.SqlData
                 // pakt voor alle dromen in de database uit de kolommen de data en zet die om naar een object.
                 int newDreamId = Convert.ToInt32(reader["Id"]);
                 int newDreamUserId = Convert.ToInt32(reader["UserId"]);
-                DateTime newDreamDateTime = Convert.ToDateTime(reader["CreationDate"]);
                 string newDreamTitle = reader["Title"].ToString();
                 string newDreamStory = reader["Story"].ToString();
+                DateTime newDreamDateTime = Convert.ToDateTime(reader["CreationDateTime"]);
 
                 DreamConnectorModel newDream = new(newDreamId, newDreamUserId, newDreamTitle, newDreamStory, newDreamDateTime);
 
@@ -57,7 +57,7 @@ namespace Data.SqlData
         {
             List<DreamConnectorModel> returnList = new();
             using SqlConnection conn = new(DataBaseConnection.String);
-            using SqlCommand query = new("select Id, UserId, CreationDate, Title, Story from Dream WHERE UserId = @UserId;", conn);
+            using SqlCommand query = new("select Id, UserId, Title, Story, CreationDateTime from Dream WHERE UserId = @UserId;", conn);
             //database connectie openen
             conn.Open();
             query.Parameters.AddWithValue("@UserId", userId);
@@ -67,7 +67,7 @@ namespace Data.SqlData
                 // pakt voor alle dromen in de database uit de kolommen de data en zet die om naar een object.
                 int newDreamId = Convert.ToInt32(reader["Id"]);
                 int newDreamUserId = Convert.ToInt32(reader["UserId"]);
-                DateTime newDreamDateTime = Convert.ToDateTime(reader["CreationDate"]);
+                DateTime newDreamDateTime = Convert.ToDateTime(reader["CreationDateTime"]);
                 string newDreamTitle = reader["Title"].ToString();
                 string newDreamStory = reader["Story"].ToString();
 
@@ -83,7 +83,7 @@ namespace Data.SqlData
         public DreamConnectorModel GetDreamById(int id)
         {
             using SqlConnection conn = new(DataBaseConnection.String);
-            using SqlCommand query = new("select Id, UserId, CreationDate, Title, Story from Dream WHERE Id = @Id;", conn);
+            using SqlCommand query = new("select Id, UserId, CreationDateTime, Title, Story from Dream WHERE Id = @Id;", conn);
             //database connectie openen
             conn.Open();
             query.Parameters.AddWithValue("@Id", id);
@@ -93,7 +93,7 @@ namespace Data.SqlData
             // pakt voor alle dromen in de database uit de kolommen de data en zet die om naar een object.
             int newDreamId = Convert.ToInt32(reader["Id"]);
             int newDreamUserId = Convert.ToInt32(reader["UserId"]);
-            DateTime newDreamDateTime = Convert.ToDateTime(reader["CreationDate"]);
+            DateTime newDreamDateTime = Convert.ToDateTime(reader["CreationDateTime"]);
             string newDreamTitle = reader["Title"].ToString();
             string newDreamStory = reader["Story"].ToString();
 

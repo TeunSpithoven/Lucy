@@ -2,12 +2,12 @@
 
 namespace Objects
 {
-    public class Dream
+    public interface IDream
     {
-        public int Id { get; private set; }
-        public int UserId { get; private set; }
-        public string Title { get; private set; }
-        public string Story { get; private set; }
-        public DateTime CreationDateTime { get; private set; }
+        public int Id { get; }
+        public int UserId { get; }
+        public string Title { get; }
+        public string Story { get; }
+        public DateTime CreationDateTime { get; }
     }
 }

@@ -1,15 +1,21 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using Objects;
 
 namespace Data.Models
 {
-    public class DreamDataModel : Dream
+    public class DreamDataModel : IDream
     {
-        public new int Id { get; private set; }
-        public new int UserId { get; private set; }
-        public new string Title { get; private set; }
-        public new string Story { get; private set; }
-        public new DateTime CreationDateTime { get; private set; }
+        [Required]
+        public int Id { get; }
+        [Required]
+        public int UserId { get; }
+        [Required]
+        public string Title { get; }
+        [Required]
+        public string Story { get; }
+        [Required]
+        public DateTime CreationDateTime { get; }
 
         public DreamDataModel(int id, int userId, string title, string story, DateTime creationDateTime)
         {

@@ -4,18 +4,18 @@ using Objects;
 
 namespace Logic.Models
 {
-    public class DreamLogicModel : Dream
+    public class DreamLogicModel : IDream
     {
         [Required]
-        public new int Id { get; private set; }
+        public int Id { get; }
         [Required]
-        public new int UserId { get; private set; }
+        public int UserId { get; }
         [Required]
-        public new string Title { get; private set; }
+        public string Title { get; }
         [Required]
-        public new string Story { get; private set; }
+        public string Story { get; }
         [Required]
-        public new DateTime CreationDateTime { get; private set; }
+        public DateTime CreationDateTime { get; }
 
         public DreamLogicModel(int id, int userId, string title, string story, DateTime creationDateTime)
         {
