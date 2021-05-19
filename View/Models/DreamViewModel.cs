@@ -1,10 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Objects;
 
 namespace View.Models
 {
-    public class DreamViewModel : IDream
+    public class DreamViewModel
     {
         [Key]
         //[Required]

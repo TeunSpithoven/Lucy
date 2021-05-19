@@ -1,10 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Objects;
 
 namespace LogicDataConnector.Models
 {
-    public class DreamConnectorModel : IDream
+    public class DreamConnectorModel
     {
         [Required]
         public int Id { get; }

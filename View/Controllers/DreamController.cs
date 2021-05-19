@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Logic.Interfaces;
 using Logic.Models;
-using LogicDataConnector.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using View.Mappers;
 using View.Models;

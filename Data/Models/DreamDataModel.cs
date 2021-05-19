@@ -1,10 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Objects;
 
 namespace Data.Models
 {
-    public class DreamDataModel : IDream
+    public class DreamDataModel
     {
         [Required]
         public int Id { get; }

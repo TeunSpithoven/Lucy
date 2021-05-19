@@ -1,10 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Objects;
 
 namespace Logic.Models
 {
-    public class DreamLogicModel : IDream
+    public class DreamLogicModel
     {
         [Required]
         public int Id { get; }
