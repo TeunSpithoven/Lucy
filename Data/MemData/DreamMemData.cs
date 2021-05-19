@@ -34,7 +34,7 @@ namespace Data.MemData
 
         public List<DreamConnectorModel> GetDreamsByUserId(int userId)
         {
-            List<DreamDataModel> dataDreams = new();
+            List<DreamDataModel> dataDreams = DreamDataContainer.Items;
             List<DreamConnectorModel> conDreams = new();
             foreach (var dream in dataDreams)
             {

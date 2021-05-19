@@ -7,16 +7,14 @@ namespace Logic.Mappers
     {
         public static DreamConnectorModel LogicToConnectorDreamModel(DreamLogicModel logicDream)
         {
-            DreamConnectorModel conDream;
-            conDream = new(logicDream.Id, logicDream.UserId, logicDream.Title, logicDream.Story, logicDream.CreationDateTime);
-            return conDream;
+            if (logicDream == null) return null;
+            return new(logicDream.Id, logicDream.UserId, logicDream.Title, logicDream.Story, logicDream.CreationDateTime);
         }
 
         public static DreamLogicModel ConnectorToLogicDreamModel(DreamConnectorModel conDream)
         {
-            DreamLogicModel logicDream;
-            logicDream = new DreamLogicModel(conDream.Id, conDream.UserId, conDream.Title, conDream.Story, conDream.CreationDateTime);
-            return logicDream;
+            if (conDream == null) return null;
+            return new(conDream.Id, conDream.UserId, conDream.Title, conDream.Story, conDream.CreationDateTime);
         }
     }
 }
