@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using Data.Models;
 using Logic.Interfaces;
 using Logic.Mappers;
 using Logic.Models;
 using LogicDataConnector.Interfaces;
-using LogicDataConnector.Models;
 
 namespace Logic
 {
@@ -25,7 +25,7 @@ namespace Logic
 
             if (errors.Any()) return;
 
-            DreamConnectorModel conDream = DreamLogicMapper.LogicToConnectorDreamModel(logicDream);
+            DreamDataModel conDream = DreamLogicMapper.LogicToDataDreamModel(logicDream);
             _dreamData.AddDream(conDream);
         }
 
@@ -36,11 +36,11 @@ namespace Logic
 
         public List<DreamLogicModel> GetDreams()
         {
-            List<DreamConnectorModel> conDreams = _dreamData.GetDreams();
+            List<DreamDataModel> conDreams = _dreamData.GetDreams();
             List<DreamLogicModel> logicDreams = new();
             foreach (var conDream in conDreams)
             {
-                DreamLogicModel newLogicDream = DreamLogicMapper.ConnectorToLogicDreamModel(conDream);
+                DreamLogicModel newLogicDream = DreamLogicMapper.DataToLogicDreamModel(conDream);
                 logicDreams.Add(newLogicDream);
             }
             return logicDreams;
@@ -48,11 +48,11 @@ namespace Logic
 
         public List<DreamLogicModel> GetDreamsByUserId(int userId)
         {
-            List<DreamConnectorModel> conDreams = _dreamData.GetDreamsByUserId(userId);
+            List<DreamDataModel> conDreams = _dreamData.GetDreamsByUserId(userId);
             List<DreamLogicModel> logicDreams = new();
             foreach (var conDream in conDreams)
             {
-                DreamLogicModel newLogicDream = DreamLogicMapper.ConnectorToLogicDreamModel(conDream);
+                DreamLogicModel newLogicDream = DreamLogicMapper.DataToLogicDreamModel(conDream);
                 logicDreams.Add(newLogicDream);
             }
             return logicDreams;
@@ -60,8 +60,8 @@ namespace Logic
 
         public DreamLogicModel GetDreamById(int id)
         {
-            DreamConnectorModel conDream = _dreamData.GetDreamById(id);
-            DreamLogicModel logicDream = DreamLogicMapper.ConnectorToLogicDreamModel(conDream);
+            DreamDataModel conDream = _dreamData.GetDreamById(id);
+            DreamLogicModel logicDream = DreamLogicMapper.DataToLogicDreamModel(conDream);
             return logicDream;
         }
     }

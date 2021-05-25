@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using Data.Models;
 using LogicDataConnector.Interfaces;
-using LogicDataConnector.Models;
 
 namespace Data.SqlData
 {
     public class DreamSqlData : IDreamData
     {
         // CREATE
-        public void AddDream(DreamConnectorModel dataDream)
+        public void AddDream(DreamDataModel dataDream)
         {
             using SqlConnection conn = new(DataBaseConnection.String);
             using SqlCommand query = new("INSERT INTO Dream (UserId, Title, Story, CreationDateTime) VALUES (@UserId, @Title, @Story, @CreationDateTime)", conn);
@@ -26,9 +25,9 @@ namespace Data.SqlData
         }
 
         // READ
-        public List<DreamConnectorModel> GetDreams()
+        public List<DreamDataModel> GetDreams()
         {
-            List<DreamConnectorModel> returnList = new();
+            List<DreamDataModel> returnList = new();
 
             using SqlConnection conn = new(DataBaseConnection.String);
             using SqlCommand query = new("select Id, UserId, Title, Story, CreationDateTime from Dream", conn);
@@ -45,7 +44,7 @@ namespace Data.SqlData
                 string newDreamStory = reader["Story"].ToString();
                 DateTime newDreamDateTime = Convert.ToDateTime(reader["CreationDateTime"]);
 
-                DreamConnectorModel newDream = new(newDreamId, newDreamUserId, newDreamTitle, newDreamStory, newDreamDateTime);
+                DreamDataModel newDream = new(newDreamId, newDreamUserId, newDreamTitle, newDreamStory, newDreamDateTime);
 
                 // voegd die droom toe aan de lijst
                 returnList.Add(newDream);
@@ -53,9 +52,9 @@ namespace Data.SqlData
             return returnList;
         }
 
-        public List<DreamConnectorModel> GetDreamsByUserId(int userId)
+        public List<DreamDataModel> GetDreamsByUserId(int userId)
         {
-            List<DreamConnectorModel> returnList = new();
+            List<DreamDataModel> returnList = new();
             using SqlConnection conn = new(DataBaseConnection.String);
             using SqlCommand query = new("select Id, UserId, Title, Story, CreationDateTime from Dream WHERE UserId = @UserId;", conn);
             //database connectie openen
@@ -71,7 +70,7 @@ namespace Data.SqlData
                 string newDreamTitle = reader["Title"].ToString();
                 string newDreamStory = reader["Story"].ToString();
 
-                DreamConnectorModel newDream = new(newDreamId, newDreamUserId, newDreamTitle, newDreamStory, newDreamDateTime);
+                DreamDataModel newDream = new(newDreamId, newDreamUserId, newDreamTitle, newDreamStory, newDreamDateTime);
 
                 // voegd die droom toe aan de lijst
                 returnList.Add(newDream);
@@ -80,7 +79,7 @@ namespace Data.SqlData
             return returnList;
         }
 
-        public DreamConnectorModel GetDreamById(int id)
+        public DreamDataModel GetDreamById(int id)
         {
             using SqlConnection conn = new(DataBaseConnection.String);
             using SqlCommand query = new("select Id, UserId, CreationDateTime, Title, Story from Dream WHERE Id = @Id;", conn);
@@ -97,7 +96,7 @@ namespace Data.SqlData
             string newDreamTitle = reader["Title"].ToString();
             string newDreamStory = reader["Story"].ToString();
 
-            DreamConnectorModel newDream = new(newDreamId, newDreamUserId, newDreamTitle, newDreamStory, newDreamDateTime);
+            DreamDataModel newDream = new(newDreamId, newDreamUserId, newDreamTitle, newDreamStory, newDreamDateTime);
             return newDream;
         }
 

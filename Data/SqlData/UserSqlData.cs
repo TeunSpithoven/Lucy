@@ -1,4 +1,4 @@
-﻿using Data.Models;
+﻿using LogicDataConnector.Models;
 
 namespace Data.SqlData
 {
@@ -6,7 +6,7 @@ namespace Data.SqlData
     {
         public bool IsLoggedIn(UserDataModel dataUser)
         {
-            if (dataUser.LoggedIn)
+            if (dataUser.IsLoggedIn)
                 return true;
 
             return false;

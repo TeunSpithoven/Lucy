@@ -1,48 +1,32 @@
 ﻿using System.Collections.Generic;
-using Data.Containers;
-using Data.Mappers;
 using Data.Models;
 using LogicDataConnector.Interfaces;
-using LogicDataConnector.Models;
 
 namespace Data.MemData
 {
     public class DreamMemData : IDreamData
     {
-        public void AddDream(DreamConnectorModel conDream)
+        public static List<DreamDataModel> Items = new();
+
+        public void AddDream(DreamDataModel dataDream)
         {
-            DreamDataModel dataDream = DreamDataMapper.DreamConnectorToDataModel(conDream);
-            DreamDataContainer.Items.Add(dataDream);
+            Items.Add(dataDream);
         }
 
         public void RemoveDreamById(int id)
         {
-            DreamDataContainer.Items.RemoveAll(x => x.Id == id);
+            Items.RemoveAll(x => x.Id == id);
         }
 
-        public List<DreamConnectorModel> GetDreams()
+        public List<DreamDataModel> GetDreams()
         {
-            List<DreamDataModel> dataDreams = DreamDataContainer.Items;
-            List<DreamConnectorModel> conDreams = new();
-            foreach (var dream in dataDreams)
-            {
-                conDreams.Add(DreamDataMapper.DreamDataToConnectorModel(dream));
-            }
-
-            return conDreams;
+            return Items;
         }
 
-        public List<DreamConnectorModel> GetDreamsByUserId(int userId)
+        public List<DreamDataModel> GetDreamsByUserId(int userId)
         {
-            List<DreamDataModel> dataDreams = DreamDataContainer.Items;
-            List<DreamConnectorModel> conDreams = new();
-            foreach (var dream in dataDreams)
-            {
-                conDreams.Add(DreamDataMapper.DreamDataToConnectorModel(dream));
-            }
-
-            List<DreamConnectorModel> returnDreams = new();
-            foreach (var dream in conDreams)
+            List<DreamDataModel> returnDreams = new();
+            foreach (var dream in Items)
             {
                 if (dream.UserId == userId)
                 {
@@ -53,9 +37,9 @@ namespace Data.MemData
             return returnDreams;
         }
 
-        public DreamConnectorModel GetDreamById(int id)
+        public DreamDataModel GetDreamById(int id)
         {
-            return DreamDataMapper.DreamDataToConnectorModel(DreamDataContainer.Items.Find(x => x.Id == id));
+            return Items.Find(x => x.Id == id);
         }
     }
 }

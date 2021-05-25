@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Data.Containers;
-using Data.Mappers;
 using Data.MemData;
 using Data.Models;
 using Logic;
@@ -9,7 +7,6 @@ using Logic.Interfaces;
 using Logic.Mappers;
 using Logic.Models;
 using LogicDataConnector.Interfaces;
-using LogicDataConnector.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Test.Logic
@@ -25,28 +22,28 @@ namespace Test.Logic
             IDreamData dreamConnector = dreamMemData;
             DreamLogic dreamLogic = new(dreamConnector);
             IDreamLogic iDreamLogic = dreamLogic;
-            DreamDataContainer.Items.Clear();
+            DreamMemData.Items.Clear();
 
             int id = 5;
             int userId = 2;
             string title = "Title of the test logicDream";
             string story = "Story of the test logicDream";
             DreamLogicModel logicDream = new(id, userId, title, story);
-            DreamConnectorModel conDream = DreamLogicMapper.LogicToConnectorDreamModel(logicDream);
+            DreamDataModel dataDream = DreamLogicMapper.LogicToDataDreamModel(logicDream);
 
             //act
             iDreamLogic.AddDream(logicDream);
 
             //assert
-            int amountOfDreamsInMemory = DreamDataContainer.Items.Count;
+            int amountOfDreamsInMemory = DreamMemData.Items.Count;
             Assert.AreNotEqual(0, amountOfDreamsInMemory);
 
-            DreamDataModel firstDreamInMemory = DreamDataContainer.Items.First();
+            DreamDataModel firstDreamInMemory = DreamMemData.Items.First();
 
-            Assert.AreEqual(conDream.Id, firstDreamInMemory.Id);
-            Assert.AreEqual(conDream.UserId, firstDreamInMemory.UserId);
-            Assert.AreEqual(conDream.Title, firstDreamInMemory.Title);
-            Assert.AreEqual(conDream.Story, firstDreamInMemory.Story);
+            Assert.AreEqual(dataDream.Id, firstDreamInMemory.Id);
+            Assert.AreEqual(dataDream.UserId, firstDreamInMemory.UserId);
+            Assert.AreEqual(dataDream.Title, firstDreamInMemory.Title);
+            Assert.AreEqual(dataDream.Story, firstDreamInMemory.Story);
         }
 
         [TestMethod]
@@ -57,22 +54,21 @@ namespace Test.Logic
             IDreamData dreamConnector = dreamMemData;
             DreamLogic dreamLogic = new(dreamConnector);
             IDreamLogic iDreamLogic = dreamLogic;
-            DreamDataContainer.Items.Clear();
+            DreamMemData.Items.Clear();
 
             int id = 5;
             int userId = 2;
             string title = "Title of the test logicDream";
             string story = "Story of the test logicDream";
             DreamLogicModel logicDream = new(id, userId, title, story);
-            DreamConnectorModel conDream = DreamLogicMapper.LogicToConnectorDreamModel(logicDream);
-            DreamDataModel dataDream = DreamDataMapper.DreamConnectorToDataModel(conDream);
-            DreamDataContainer.Items.Add(dataDream);
+            DreamDataModel dataDream = DreamLogicMapper.LogicToDataDreamModel(logicDream);
+            DreamMemData.Items.Add(dataDream);
 
             //act
             iDreamLogic.RemoveDream(5);
 
             //assert
-            Assert.AreEqual(0, DreamDataContainer.Items.Count);
+            Assert.AreEqual(0, DreamMemData.Items.Count);
         }
 
         [TestMethod]
@@ -83,22 +79,21 @@ namespace Test.Logic
             IDreamData dreamConnector = dreamMemData;
             DreamLogic dreamLogic = new(dreamConnector);
             IDreamLogic iDreamLogic = dreamLogic;
-            DreamDataContainer.Items.Clear();
+            DreamMemData.Items.Clear();
 
             int id = 5;
             int userId = 2;
             string title = "Title of the test logicDream";
             string story = "Story of the test logicDream";
             DreamLogicModel logicDream = new(id, userId, title, story);
-            DreamConnectorModel conDream = DreamLogicMapper.LogicToConnectorDreamModel(logicDream);
-            DreamDataModel dataDream = DreamDataMapper.DreamConnectorToDataModel(conDream);
-            DreamDataContainer.Items.Add(dataDream);
+            DreamDataModel dataDream = DreamLogicMapper.LogicToDataDreamModel(logicDream);
+            DreamMemData.Items.Add(dataDream);
 
             //act
             iDreamLogic.RemoveDream(4);
 
             //assert
-            Assert.AreEqual(1, DreamDataContainer.Items.Count);
+            Assert.AreEqual(1, DreamMemData.Items.Count);
         }
 
         [TestMethod]
@@ -109,16 +104,15 @@ namespace Test.Logic
             IDreamData dreamConnector = dreamMemData;
             DreamLogic dreamLogic = new(dreamConnector);
             IDreamLogic iDreamLogic = dreamLogic;
-            DreamDataContainer.Items.Clear();
+            DreamMemData.Items.Clear();
 
             int id = 5;
             int userId = 2;
             string title = "Title of the test logicDream";
             string story = "Story of the test logicDream";
             DreamLogicModel logicDream = new(id, userId, title, story);
-            DreamConnectorModel conDream = DreamLogicMapper.LogicToConnectorDreamModel(logicDream);
-            DreamDataModel dataDream = DreamDataMapper.DreamConnectorToDataModel(conDream);
-            DreamDataContainer.Items.Add(dataDream);
+            DreamDataModel dataDream = DreamLogicMapper.LogicToDataDreamModel(logicDream);
+            DreamMemData.Items.Add(dataDream);
 
             //act
             List<DreamLogicModel> dataDreams = iDreamLogic.GetDreams();
@@ -136,16 +130,15 @@ namespace Test.Logic
             IDreamData dreamConnector = dreamMemData;
             DreamLogic dreamLogic = new(dreamConnector);
             IDreamLogic iDreamLogic = dreamLogic;
-            DreamDataContainer.Items.Clear();
+            DreamMemData.Items.Clear();
 
             int id = 5;
             int userId = 2;
             string title = "Title of the test logicDream";
             string story = "Story of the test logicDream";
             DreamLogicModel logicDream = new(id, userId, title, story);
-            DreamConnectorModel conDream = DreamLogicMapper.LogicToConnectorDreamModel(logicDream);
-            DreamDataModel dataDream = DreamDataMapper.DreamConnectorToDataModel(conDream);
-            DreamDataContainer.Items.Add(dataDream);
+            DreamDataModel dataDream = DreamLogicMapper.LogicToDataDreamModel(logicDream);
+            DreamMemData.Items.Add(dataDream);
 
             //act
             List<DreamLogicModel> logicDreams = iDreamLogic.GetDreamsByUserId(userId);
@@ -163,7 +156,7 @@ namespace Test.Logic
             IDreamData dreamConnector = dreamMemData;
             DreamLogic dreamLogic = new(dreamConnector);
             IDreamLogic iDreamLogic = dreamLogic;
-            DreamDataContainer.Items.Clear();
+            DreamMemData.Items.Clear();
 
             int id = 5;
             int userId = 2;
@@ -171,9 +164,8 @@ namespace Test.Logic
             string title = "Title of the test logicDream";
             string story = "Story of the test logicDream";
             DreamLogicModel logicDream = new(id, userId, title, story);
-            DreamConnectorModel conDream = DreamLogicMapper.LogicToConnectorDreamModel(logicDream);
-            DreamDataModel dataDream = DreamDataMapper.DreamConnectorToDataModel(conDream);
-            DreamDataContainer.Items.Add(dataDream);
+            DreamDataModel dataDream = DreamLogicMapper.LogicToDataDreamModel(logicDream);
+            DreamMemData.Items.Add(dataDream);
 
             //act
             List<DreamLogicModel> dataDreams = iDreamLogic.GetDreamsByUserId(requestedUserId);
@@ -191,16 +183,15 @@ namespace Test.Logic
             IDreamData dreamConnector = dreamMemData;
             DreamLogic dreamLogic = new(dreamConnector);
             IDreamLogic iDreamLogic = dreamLogic;
-            DreamDataContainer.Items.Clear();
+            DreamMemData.Items.Clear();
 
             int id = 5;
             int userId = 2;
             string title = "Title of the test logicDream";
             string story = "Story of the test logicDream";
             DreamLogicModel logicDream = new(id, userId, title, story);
-            DreamConnectorModel conDream = DreamLogicMapper.LogicToConnectorDreamModel(logicDream);
-            DreamDataModel dataDream = DreamDataMapper.DreamConnectorToDataModel(conDream);
-            DreamDataContainer.Items.Add(dataDream);
+            DreamDataModel dataDream = DreamLogicMapper.LogicToDataDreamModel(logicDream);
+            DreamMemData.Items.Add(dataDream);
 
             //act
             DreamLogicModel returnDream = iDreamLogic.GetDreamById(id);
@@ -222,7 +213,7 @@ namespace Test.Logic
             IDreamData dreamConnector = dreamMemData;
             DreamLogic dreamLogic = new(dreamConnector);
             IDreamLogic iDreamLogic = dreamLogic;
-            DreamDataContainer.Items.Clear();
+            DreamMemData.Items.Clear();
 
             int id = 5;
             int requestedId = 4;
@@ -230,9 +221,8 @@ namespace Test.Logic
             string title = "Title of the test logicDream";
             string story = "Story of the test logicDream";
             DreamLogicModel logicDream = new(id, userId, title, story);
-            DreamConnectorModel conDream = DreamLogicMapper.LogicToConnectorDreamModel(logicDream);
-            DreamDataModel dataDream = DreamDataMapper.DreamConnectorToDataModel(conDream);
-            DreamDataContainer.Items.Add(dataDream);
+            DreamDataModel dataDream = DreamLogicMapper.LogicToDataDreamModel(logicDream);
+            DreamMemData.Items.Add(dataDream);
 
             //act
             DreamLogicModel returnDream = iDreamLogic.GetDreamById(requestedId);
