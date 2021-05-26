@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Data.MemData;
-using Data.Models;
 using Logic;
 using Logic.Interfaces;
 using Logic.Mappers;
 using Logic.Models;
 using LogicDataConnector.Interfaces;
+using LogicDataConnector.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Test.Logic

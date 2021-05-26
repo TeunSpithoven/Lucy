@@ -1,4 +1,4 @@
-﻿namespace Data.Models
+﻿namespace Data.SqlData
 {
     public static class DataBaseConnection
     {

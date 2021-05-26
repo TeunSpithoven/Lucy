@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using View.Models;
+﻿using LogicDataConnector.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace View
 {
@@ -9,6 +9,9 @@ namespace View
             : base(options)
         { }
 
-        public DbSet<DreamViewModel> Dream { get; set; }
+        public DbSet<DreamDataModel> Dream { get; set; }
+        public DbSet<UserDataModel> User { get; set; }
+        public DbSet<CommentDataModel> Comment { get; set; }
+        public DbSet<RequestDataModel> Request { get; set; }
     }
 }

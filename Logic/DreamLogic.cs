@@ -1,20 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Data.Models;
 using Logic.Interfaces;
 using Logic.Mappers;
 using Logic.Models;
 using LogicDataConnector.Interfaces;
+using LogicDataConnector.Models;
 
 namespace Logic
 {
     public class DreamLogic : IDreamLogic
     {
         private readonly IDreamData _dreamData;
-        public DreamLogic(IDreamData dreamConnector)
+        public DreamLogic(IDreamData dreamData)
         {
-            _dreamData = dreamConnector;
+            _dreamData = dreamData;
         }
 
         public void AddDream(DreamLogicModel logicDream)

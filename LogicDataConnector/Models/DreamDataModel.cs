@@ -1,20 +1,16 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Data.Models
+namespace LogicDataConnector.Models
 {
     public class DreamDataModel
     {
-        [Required]
-        public int Id { get; }
-        [Required]
-        public int UserId { get; }
-        [Required]
-        public string Title { get; }
-        [Required]
-        public string Story { get; }
-        [Required]
-        public DateTime CreationDateTime { get; }
+        [Key]
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public string Title { get; set; }
+        public string Story { get; set; }
+        public DateTime CreationDateTime { get; set; }
 
         public DreamDataModel(int id, int userId, string title, string story, DateTime creationDateTime)
         {
@@ -23,6 +19,11 @@ namespace Data.Models
             Title = title;
             Story = story;
             CreationDateTime = creationDateTime;
+        }
+
+        public DreamDataModel()
+        {
+
         }
     }
 }

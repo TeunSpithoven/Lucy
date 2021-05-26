@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using Data.Models;
 using LogicDataConnector.Interfaces;
+using LogicDataConnector.Models;
 
 namespace Data.SqlData
 {

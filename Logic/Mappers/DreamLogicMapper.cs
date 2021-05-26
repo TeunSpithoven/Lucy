@@ -1,5 +1,5 @@
-﻿using Data.Models;
-using Logic.Models;
+﻿using Logic.Models;
+using LogicDataConnector.Models;
 
 namespace Logic.Mappers
 {

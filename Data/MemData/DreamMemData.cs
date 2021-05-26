@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Data.Models;
 using LogicDataConnector.Interfaces;
+using LogicDataConnector.Models;
 
 namespace Data.MemData
 {

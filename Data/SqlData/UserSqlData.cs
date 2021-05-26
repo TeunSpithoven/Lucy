@@ -6,7 +6,7 @@ namespace Data.SqlData
     {
         public bool IsLoggedIn(UserDataModel dataUser)
         {
-            if (dataUser.IsLoggedIn)
+            if (dataUser.LoggedIn)
                 return true;
 
             return false;
