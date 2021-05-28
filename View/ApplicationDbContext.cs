@@ -10,7 +10,7 @@ namespace View
         { }
 
         public DbSet<DreamDataModel> Dream { get; set; }
-        public DbSet<UserDataModel> User { get; set; }
+        public DbSet<UserDataModel> Users { get; set; }
         public DbSet<CommentDataModel> Comment { get; set; }
         public DbSet<RequestDataModel> Request { get; set; }
     }

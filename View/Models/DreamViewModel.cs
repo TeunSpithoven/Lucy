@@ -7,15 +7,15 @@ namespace View.Models
     {
         [Key]
         //[Required]
-        public int Id { get; private set; }
+        public int Id { get; }
         //[Required]
-        public int UserId { get; private set; }
+        public int UserId { get; }
         //[Required]
-        public string Title { get; private set; }
+        public string Title { get; }
         //[Required]
-        public string Story { get; private set; }
+        public string Story { get; }
         //[Required]
-        public DateTime CreationDateTime { get; private set; }
+        public DateTime CreationDateTime { get; }
 
         public DreamViewModel(int id, int userId, string title, string story, DateTime creationDateTime)
         {

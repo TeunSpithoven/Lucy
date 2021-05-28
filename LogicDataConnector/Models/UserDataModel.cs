@@ -7,8 +7,8 @@ namespace LogicDataConnector.Models
     {
         [Key]
         public int Id { get; set; }
-        public string Username { get; private set; }
-        public string Password { get; private set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
         public bool LoggedIn { get; set; }
         public DateTime CreationDateTime { get; set; }
 
@@ -19,6 +19,11 @@ namespace LogicDataConnector.Models
             Password = password;
             LoggedIn = loggedIn;
             CreationDateTime = creationDateTime;
+        }
+
+        public UserDataModel()
+        {
+            
         }
     }
 }

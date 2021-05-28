@@ -1,20 +1,30 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Logic.Interfaces;
+using Logic.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace View.Controllers
 {
     public class UserViewController : Controller
     {
-        // public bool IsLoggedIn(UserViewModel viewUser)
-        // {
-        //     UserLogicModel logicUser = new(viewUser.Id, viewUser.Username, viewUser.Password, viewUser.LoggedIn);
-        //     UserLogic d = new();
-        //     bool isLoggedIn = d.IsLoggedIn(logicUser);
-        //     return isLoggedIn;
-        // }
+        private readonly IUserLogic _userLogic;
+
+        public UserViewController(IUserLogic userLogic)
+        {
+            _userLogic = userLogic;
+        }
 
         public IActionResult Register()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Register(int id, string username, string password)
+        {
+            UserLogicModel logicUser = new(id, username, password, false, DateTime.Now);
+            _userLogic.Create(logicUser);
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult Login()

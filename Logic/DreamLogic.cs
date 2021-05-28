@@ -25,8 +25,8 @@ namespace Logic
 
             if (errors.Any()) return;
 
-            DreamDataModel conDream = DreamLogicMapper.LogicToDataDreamModel(logicDream);
-            _dreamData.AddDream(conDream);
+            DreamDataModel dataDream = DreamLogicMapper.LogicToDataDreamModel(logicDream);
+            _dreamData.AddDream(dataDream);
         }
 
         public void RemoveDream(int id)

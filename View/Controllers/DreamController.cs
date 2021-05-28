@@ -11,7 +11,7 @@ namespace View.Controllers
     {
         private readonly IDreamLogic _dreamLogic;
 
-        public DreamController( IDreamLogic dreamLogic)
+        public DreamController(IDreamLogic dreamLogic)
         {
             _dreamLogic = dreamLogic;
         }
@@ -33,13 +33,11 @@ namespace View.Controllers
         // // dreams for logged in person
         // public IActionResult Index(int userId)
         // {
-        //     DreamLogicControllerFactory dreamLogicControllerFactory = new();
-        //     IDreamLogicController dreamLogicController = dreamLogicControllerFactory.DreamLogicController();
         //     List<DreamViewModel> viewDreams = new();
-        //     List<DreamLogicModel> logicDreams = dreamLogicController.GetDreamsByUserId(userId);
+        //     List<DreamLogicModel> logicDreams = _dreamLogic.GetDreamsByUserId(userId);
         //     foreach (var logicDream in logicDreams)
         //     {
-        //         DreamViewModel newViewDream = new(logicDream.Id, logicDream.UserId, logicDream.Title, logicDream.Story);
+        //         DreamViewModel newViewDream = new(logicDream.Id, logicDream.UserId, logicDream.Title, logicDream.Story, logicDream.CreationDateTime);
         //         viewDreams.Add(newViewDream);
         //     }
         //     return View(viewDreams);

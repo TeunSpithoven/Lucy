@@ -10,8 +10,8 @@ using View;
 namespace View.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210526134415_AddDreamCreationDateTime")]
-    partial class AddDreamCreationDateTime
+    [Migration("20210528131415_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -97,15 +97,9 @@ namespace View.Migrations
                     b.Property<bool>("LoggedIn")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Username")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

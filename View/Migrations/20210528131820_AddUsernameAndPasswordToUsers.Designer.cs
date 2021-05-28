@@ -10,8 +10,8 @@ using View;
 namespace View.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210526133813_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210528131820_AddUsernameAndPasswordToUsers")]
+    partial class AddUsernameAndPasswordToUsers
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -45,6 +45,9 @@ namespace View.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreationDateTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Story")
                         .HasColumnType("nvarchar(max)");
@@ -102,7 +105,7 @@ namespace View.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }
