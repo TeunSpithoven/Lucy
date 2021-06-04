@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using LogicDataConnector.Interfaces;
-using LogicDataConnector.Models;
+using Data.Interfaces;
+using Data.Models;
 
-namespace Data.MemData
+namespace Model.MemData
 {
     public class DreamMemData : IDreamData
     {

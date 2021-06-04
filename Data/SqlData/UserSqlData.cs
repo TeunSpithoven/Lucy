@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Security.Cryptography.X509Certificates;
-using LogicDataConnector.Interfaces;
-using LogicDataConnector.Models;
+using Data.Interfaces;
+using Data.Models;
 
-namespace Data.SqlData
+namespace Model.SqlData
 {
     public class UserSqlData : IUserData
     {

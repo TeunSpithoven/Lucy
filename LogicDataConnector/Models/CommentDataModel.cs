@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace LogicDataConnector.Models
+namespace Data.Models
 {
     public class CommentDataModel
     {
