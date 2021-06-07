@@ -4,7 +4,6 @@ namespace View.Models
 {
     public class RequestViewModel
     {
-        [Key]
         public int Id { get; set; }
         public int User1 { get; set; }
         public int User2 { get; set; }
@@ -16,11 +15,6 @@ namespace View.Models
             User1 = user1;
             User2 = user2;
             Confirmed = confirmed;
-        }
-
-        public RequestViewModel()
-        {
-            
         }
     }
 }

@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "View", "View.csproj", "{245
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic", "..\Logic\Logic.csproj", "{E987CFDF-CE10-4A3A-86B1-16CBBF1FE9EB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "..\Data\Model.csproj", "{5F2728E6-9A6E-46F1-99C9-4B0B33FCBF51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "..\Data\Data.csproj", "{5F2728E6-9A6E-46F1-99C9-4B0B33FCBF51}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "..\Test\Test.csproj", "{06304374-4127-4AEE-AD1F-0CB1BDBC6BD1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "..\LogicDataConnector\Data.csproj", "{F9D11397-9C6C-44DB-981D-16409E022979}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataInterface", "..\DataInterface\DataInterface.csproj", "{5AE03277-1679-40C0-A0BE-3C251F33F6DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{06304374-4127-4AEE-AD1F-0CB1BDBC6BD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06304374-4127-4AEE-AD1F-0CB1BDBC6BD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06304374-4127-4AEE-AD1F-0CB1BDBC6BD1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F9D11397-9C6C-44DB-981D-16409E022979}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F9D11397-9C6C-44DB-981D-16409E022979}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F9D11397-9C6C-44DB-981D-16409E022979}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F9D11397-9C6C-44DB-981D-16409E022979}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AE03277-1679-40C0-A0BE-3C251F33F6DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AE03277-1679-40C0-A0BE-3C251F33F6DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AE03277-1679-40C0-A0BE-3C251F33F6DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AE03277-1679-40C0-A0BE-3C251F33F6DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,7 +5,6 @@ namespace View.Models
 {
     public class UserViewModel
     {
-        [Key]
         public int Id { get; set; }
         public string Username { get; }
         public string Password { get; }

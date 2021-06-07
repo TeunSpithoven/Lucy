@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 using Data.Interfaces;
 using Data.Models;
 
-namespace Model.SqlData
+namespace Data.SqlData
 {
     public class UserSqlData : IUserData
     {

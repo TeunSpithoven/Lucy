@@ -1,4 +1,4 @@
-﻿namespace Model.SqlData
+﻿namespace Data.SqlData
 {
     public static class DataBaseConnection
     {
