@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LogicDataConnector\LogicDataConnector.csproj" />
+    <ProjectReference Include="..\LogicDataConnector\Data.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using Data.Interfaces;
+using Data.Models;
 using Logic.Interfaces;
 using Logic.Mappers;
 using Logic.Models;
-using LogicDataConnector.Interfaces;
-using LogicDataConnector.Models;
 
 namespace Logic
 {

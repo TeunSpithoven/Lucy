@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using LogicDataConnector.Models;
+using Data.Models;
 
-namespace LogicDataConnector.Interfaces
+namespace Data.Interfaces
 {
     public interface IDreamData
     {

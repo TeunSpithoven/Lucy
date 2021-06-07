@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "View", "View.csproj", "{245
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic", "..\Logic\Logic.csproj", "{E987CFDF-CE10-4A3A-86B1-16CBBF1FE9EB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "..\Data\Data.csproj", "{5F2728E6-9A6E-46F1-99C9-4B0B33FCBF51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "..\Data\Model.csproj", "{5F2728E6-9A6E-46F1-99C9-4B0B33FCBF51}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "..\Test\Test.csproj", "{06304374-4127-4AEE-AD1F-0CB1BDBC6BD1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogicDataConnector", "..\LogicDataConnector\LogicDataConnector.csproj", "{F9D11397-9C6C-44DB-981D-16409E022979}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "..\LogicDataConnector\Data.csproj", "{F9D11397-9C6C-44DB-981D-16409E022979}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

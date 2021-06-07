@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LogicDataConnector.Models;
+﻿using System.Collections.Generic;
+using Data.Models;
 
-namespace LogicDataConnector.Interfaces
+namespace Data.Interfaces
 {
     public interface IUserData
     {

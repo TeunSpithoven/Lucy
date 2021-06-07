@@ -1,4 +1,4 @@
-﻿using LogicDataConnector.Models;
+﻿using Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace View
