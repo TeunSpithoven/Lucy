@@ -17,9 +17,7 @@ namespace Data.MemData
         public void RemoveDreamById(int id)
         {
             if (Items.Exists(x => x.Id == id))
-            {
                 Items.RemoveAll(x => x.Id == id);
-            }
         }
 
         public List<DreamDataModel> GetDreams()
@@ -29,16 +27,7 @@ namespace Data.MemData
 
         public List<DreamDataModel> GetDreamsByUserId(int userId)
         {
-            List<DreamDataModel> returnDreams = new();
-            foreach (var dream in Items)
-            {
-                if (dream.UserId == userId)
-                {
-                    returnDreams.Add(dream);
-                }
-            }
-
-            return returnDreams;
+            return Items.Where(dream => dream.UserId == userId).ToList();
         }
 
         public DreamDataModel GetDreamById(int id)
