@@ -1,19 +1,13 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace Logic.Models
 {
     public class DreamLogicModel
     {
-        [Required]
         public int Id { get; }
-        [Required]
         public int UserId { get; }
-        [Required]
         public string Title { get; }
-        [Required]
         public string Story { get; }
-        [Required]
         public DateTime CreationDateTime { get; }
 
         public DreamLogicModel(int id, int userId, string title, string story, DateTime creationDateTime)

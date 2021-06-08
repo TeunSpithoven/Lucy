@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Data.Interfaces;
 using Data.Models;
+using System.Linq;
 
 namespace Model.MemData
 {
@@ -15,7 +16,10 @@ namespace Model.MemData
 
         public void RemoveDreamById(int id)
         {
-            Items.RemoveAll(x => x.Id == id);
+            if (Items.Exists(x => x.Id == id))
+            {
+                Items.RemoveAll(x => x.Id == id);
+            }
         }
 
         public List<DreamDataModel> GetDreams()
