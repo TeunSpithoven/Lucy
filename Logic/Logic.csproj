@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LogicDataConnector\Data.csproj" />
+    <ProjectReference Include="..\DataInterface\DataInterface.csproj" />
   </ItemGroup>
 
 </Project>

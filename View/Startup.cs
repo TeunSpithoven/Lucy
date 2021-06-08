@@ -1,4 +1,5 @@
 ﻿using Data.Interfaces;
+using Data.SqlData;
 using Logic;
 using Logic.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -7,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Model.SqlData;
 
 namespace View
 {

@@ -21,7 +21,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Story)
             </th>
-            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDateTime)
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -35,6 +37,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Story)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDateTime)
             </td>
             <td>
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |

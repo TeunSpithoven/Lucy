@@ -11,11 +11,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="2.0.1" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LogicDataConnector\Data.csproj" />
+    <ProjectReference Include="..\DataInterface\DataInterface.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>4fddd922-a281-4055-a22c-8c73f10759b0</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Data\Model.csproj" />
+    <ProjectReference Include="..\Data\Data.csproj" />
     <ProjectReference Include="..\Logic\Logic.csproj" />
   </ItemGroup>
 

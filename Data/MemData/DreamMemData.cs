@@ -3,7 +3,7 @@ using Data.Interfaces;
 using Data.Models;
 using System.Linq;
 
-namespace Model.MemData
+namespace Data.MemData
 {
     public class DreamMemData : IDreamData
     {

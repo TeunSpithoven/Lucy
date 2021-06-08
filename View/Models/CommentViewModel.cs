@@ -12,10 +12,5 @@
             UserId = userId;
             Message = message;
         }
-
-        public CommentViewModel()
-        {
-            
-        }
     }
 }
