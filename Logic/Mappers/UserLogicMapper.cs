@@ -1,4 +1,4 @@
-﻿using Data.Models;
+﻿using DataInterface.Models;
 using Logic.Models;
 
 namespace Logic.Mappers

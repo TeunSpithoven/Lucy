@@ -1,12 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Data.Models
+namespace DataInterface.Models
 {
     public class DreamDataModel
     {
         [Key]
         public int Id { get; set; }
+        [ForeignKey("UserId")]
         public int UserId { get; set; }
         public string Title { get; set; }
         public string Story { get; set; }

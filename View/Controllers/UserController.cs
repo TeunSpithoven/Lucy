@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace View.Controllers
 {
-    public class UserViewController : Controller
+    public class UserController : Controller
     {
         private readonly IUserLogic _userLogic;
 
-        public UserViewController(IUserLogic userLogic)
+        public UserController(IUserLogic userLogic)
         {
             _userLogic = userLogic;
         }

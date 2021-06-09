@@ -1,5 +1,5 @@
-﻿using Data.Interfaces;
-using Data.SqlData;
+﻿using Data.SqlData;
+using DataInterface.Interfaces;
 using Logic;
 using Logic.Interfaces;
 using Microsoft.AspNetCore.Builder;

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using Data.Interfaces;
-using Data.Models;
+using DataInterface.Interfaces;
+using DataInterface.Models;
 
 namespace Data.SqlData
 {

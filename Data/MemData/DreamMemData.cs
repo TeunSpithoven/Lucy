@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Data.Interfaces;
-using Data.Models;
 using System.Linq;
+using DataInterface.Interfaces;
+using DataInterface.Models;
 
 namespace Data.MemData
 {

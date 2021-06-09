@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using Data.Interfaces;
-using Data.Models;
+using DataInterface.Interfaces;
+using DataInterface.Models;
 using Logic.Interfaces;
 using Logic.Mappers;
 using Logic.Models;

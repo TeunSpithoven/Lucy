@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Data.Models;
+using DataInterface.Models;
 
-namespace Data.Interfaces
+namespace DataInterface.Interfaces
 {
     public interface IUserData
     {

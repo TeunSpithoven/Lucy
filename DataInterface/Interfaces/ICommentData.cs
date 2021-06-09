@@ -1,4 +1,4 @@
-﻿namespace Data.Interfaces
+﻿namespace DataInterface.Interfaces
 {
     public interface ICommentData
     {

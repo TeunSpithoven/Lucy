@@ -1,4 +1,4 @@
-﻿using Data.Models;
+﻿using DataInterface.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace View
