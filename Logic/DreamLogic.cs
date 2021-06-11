@@ -17,21 +17,23 @@ namespace Logic
             _dreamData = dreamData;
         }
 
-        public void AddDream(DreamLogicModel logicDream)
+        public DreamLogicModel AddDream(DreamLogicModel logicDream)
         {
             ValidationContext context = new(logicDream);
             IList<ValidationResult> errors = new List<ValidationResult>();
             Validator.TryValidateObject(logicDream, context, errors);
 
-            if (errors.Any()) return;
+            if (errors.Any()) return null;
 
             DreamDataModel dataDream = DreamLogicMapper.LogicToDataDreamModel(logicDream);
-            _dreamData.AddDream(dataDream);
+            DreamDataModel addedDream = _dreamData.AddDream(dataDream);
+            return DreamLogicMapper.DataToLogicDreamModel(addedDream);
+
         }
 
-        public void RemoveDream(int id)
+        public int RemoveDream(int id)
         {
-            _dreamData.RemoveDreamById(id);
+            return _dreamData.RemoveDreamById(id);
         }
 
         public List<DreamLogicModel> GetDreams()

@@ -7,7 +7,7 @@ namespace View.Mappers
     {
         public static DreamViewModel LogicToViewDreamModel(DreamLogicModel logicDream)
         {
-            DreamViewModel viewDream = new(logicDream.Id, logicDream.UserId, logicDream.Title, logicDream.Story, logicDream.CreationDateTime);
+            DreamViewModel viewDream = new(logicDream.Id, logicDream.User.Id, logicDream.Title, logicDream.Story, logicDream.CreationDateTime);
             return viewDream;
         }
     }

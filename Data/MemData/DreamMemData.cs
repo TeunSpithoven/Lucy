@@ -1,23 +1,35 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using DataInterface.Interfaces;
+﻿using DataInterface.Interfaces;
 using DataInterface.Models;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 
 namespace Data.MemData
 {
     public class DreamMemData : IDreamData
     {
         public static List<DreamDataModel> Items = new();
+        private static int _id;
 
-        public void AddDream(DreamDataModel dataDream)
+        public DreamDataModel AddDream(DreamDataModel dataDream)
         {
+            dataDream.Id = _id;
             Items.Add(dataDream);
+            _id++;
+            return dataDream;
         }
 
-        public void RemoveDreamById(int id)
+        public int RemoveDreamById(int id)
         {
-            if (Items.Exists(x => x.Id == id))
+            List<DreamDataModel> dreams = Items.FindAll(x => x.Id == id);
+            if (dreams.Count > 0)
+            {
                 Items.RemoveAll(x => x.Id == id);
+                return id;
+            }
+
+            if (dreams.Count >= 2) throw new DuplicateNameException("multiple dreams found with the same id");
+            return -1;
         }
 
         public List<DreamDataModel> GetDreams()

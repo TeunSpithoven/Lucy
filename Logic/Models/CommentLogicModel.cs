@@ -3,13 +3,13 @@
     public class CommentLogicModel
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
+        public UserLogicModel User { get; set; }
         public string Message { get; set; }
 
-        public CommentLogicModel(int id, int userId, string message)
+        public CommentLogicModel(int id, UserLogicModel user, string message)
         {
             Id = id;
-            UserId = userId;
+            User = user;
             Message = message;
         }
 

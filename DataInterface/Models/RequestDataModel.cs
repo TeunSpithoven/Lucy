@@ -18,6 +18,13 @@ namespace DataInterface.Models
             Confirmed = confirmed;
         }
 
+        public RequestDataModel(int user1, int user2, bool confirmed)
+        {
+            User1 = user1;
+            User2 = user2;
+            Confirmed = confirmed;
+        }
+
         public RequestDataModel()
         {
             

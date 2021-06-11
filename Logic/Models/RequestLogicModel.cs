@@ -3,11 +3,11 @@
     public class RequestLogicModel
     {
         public int Id { get; set; }
-        public int User1 { get; set; }
-        public int User2 { get; set; }
+        public UserLogicModel User1 { get; set; }
+        public UserLogicModel User2 { get; set; }
         public bool Confirmed { get; set; }
 
-        public RequestLogicModel(int id, int user1, int user2, bool confirmed)
+        public RequestLogicModel(int id, UserLogicModel user1, UserLogicModel user2, bool confirmed)
         {
             Id = id;
             User1 = user1;

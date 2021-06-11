@@ -5,25 +5,37 @@ namespace Logic.Models
     public class DreamLogicModel
     {
         public int Id { get; }
-        public int UserId { get; }
+        public UserLogicModel User { get; }
         public string Title { get; }
         public string Story { get; }
         public DateTime CreationDateTime { get; }
 
-        public DreamLogicModel(int id, int userId, string title, string story, DateTime creationDateTime)
+        public DreamLogicModel(int id, UserLogicModel user, string title, string story, DateTime creationDateTime)
         {
             Id = id;
-            UserId = userId;
+            User = user;
             Title = title;
             Story = story;
             CreationDateTime = creationDateTime;
         }
-        public DreamLogicModel(int id, int userId, string title, string story)
+        public DreamLogicModel(int id, UserLogicModel user, string title, string story)
         {
             Id = id;
-            UserId = userId;
+            User = user;
             Title = title;
             Story = story;
+        }
+
+        public DreamLogicModel(UserLogicModel user, string title, string story)
+        {
+            User = user;
+            Title = title;
+            Story = story;
+        }
+
+        public DreamLogicModel(int userId)
+        {
+            this.User = new UserLogicModel(userId);
         }
     }
 }

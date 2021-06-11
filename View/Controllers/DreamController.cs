@@ -53,7 +53,7 @@ namespace View.Controllers
         [HttpPost]
         public IActionResult Create(int id, int userId, string title, string story)
         {
-            DreamLogicModel logicDream = new(id, userId, title, story);
+            DreamLogicModel logicDream = new(id, new UserLogicModel(userId), title, story);
             _dreamLogic.AddDream(logicDream);
             return RedirectToAction(nameof(Index));
         }

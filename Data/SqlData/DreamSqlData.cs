@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using DataInterface.Interfaces;
 using DataInterface.Models;
 
@@ -9,19 +11,23 @@ namespace Data.SqlData
     public class DreamSqlData : IDreamData
     {
         // CREATE
-        public void AddDream(DreamDataModel dataDream)
+        public DreamDataModel AddDream(DreamDataModel dataDream)
         {
+            // SET
             using SqlConnection conn = new(DataBaseConnection.String);
-            using SqlCommand query = new("INSERT INTO Dream (UserId, Title, Story, CreationDateTime) VALUES (@UserId, @Title, @Story, @CreationDateTime)", conn);
-            DateTime now = DateTime.Now;
-
-            //database connectie openen
-            conn.Open();
+            using SqlCommand query = new("INSERT INTO Dream (UserId, Title, Story, CreationDateTime)" +
+                                            " output INSERTED.ID" +
+                                            " VALUES (@UserId, @Title, @Story, @CreationDateTime)", conn);
             query.Parameters.AddWithValue("@UserId", dataDream.UserId);
             query.Parameters.AddWithValue("@Title", dataDream.Title);
             query.Parameters.AddWithValue("@Story", dataDream.Story);
+            DateTime now = DateTime.Now;
             query.Parameters.AddWithValue("@CreationDateTime", now);
-            query.ExecuteNonQuery();
+            
+            conn.Open();
+            int newId = (int)query.ExecuteScalar();
+
+            return new DreamDataModel(newId, dataDream.UserId, dataDream.Title, dataDream.Story, now);
         }
 
         // READ
@@ -101,7 +107,7 @@ namespace Data.SqlData
         }
 
         // DELETE
-        public void RemoveDreamById(int id)
+        public int RemoveDreamById(int id)
         {
             using SqlConnection conn = new(DataBaseConnection.String);
             using SqlCommand query = new("DELETE FROM Dream WHERE ID = @id;", conn);
@@ -109,6 +115,7 @@ namespace Data.SqlData
             conn.Open();
             query.Parameters.AddWithValue("@id", id);
             query.ExecuteNonQuery();
+            return id;
         }
     }
 }

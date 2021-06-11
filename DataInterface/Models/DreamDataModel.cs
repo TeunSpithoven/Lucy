@@ -8,7 +8,7 @@ namespace DataInterface.Models
     {
         [Key]
         public int Id { get; set; }
-        [ForeignKey("UserId")]
+        // [ForeignKey("UserId")]
         public int UserId { get; set; }
         public string Title { get; set; }
         public string Story { get; set; }

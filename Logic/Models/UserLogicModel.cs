@@ -18,5 +18,10 @@ namespace Logic.Models
             LoggedIn = loggedIn;
             CreationDateTime = creationDateTime;
         }
+
+        public UserLogicModel(int userId)
+        {
+            this.Id = userId;
+        }
     }
 }

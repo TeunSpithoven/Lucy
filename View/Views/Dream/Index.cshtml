@@ -18,11 +18,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
+            @* <th> *@
+            @*     @Html.DisplayNameFor(model => model.Story) *@
+            @* </th> *@
             <th>
-                @Html.DisplayNameFor(model => model.Story)
+                @* @Html.DisplayNameFor(model => model.CreationDateTime) *@
+                Created
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreationDateTime)
+                Delete
             </th>
         </tr>
     </thead>
@@ -33,16 +37,16 @@
                 @Html.DisplayFor(modelItem => item.UserId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Title)
+                <a asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Story)
-            </td>
+            @* <td> *@
+            @*     @Html.DisplayFor(modelItem => item.Story) *@
+            @* </td> *@
             <td>
                 @Html.DisplayFor(modelItem => item.CreationDateTime)
             </td>
             <td>
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                @* <a asp-action="Details" asp-route-id="@item.Id">Details</a> | *@
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>

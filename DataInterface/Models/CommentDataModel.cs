@@ -16,6 +16,12 @@ namespace DataInterface.Models
             Message = message;
         }
 
+        public CommentDataModel(int userId, string message)
+        {
+            UserId = userId;
+            Message = message;
+        }
+
         public CommentDataModel()
         {
             
