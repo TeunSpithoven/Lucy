@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Test.Logic
 {
     [TestClass]
-    public class UserLogicMemTest
+    public class UserLogicTest
     {
         [TestMethod]
         public void Create()

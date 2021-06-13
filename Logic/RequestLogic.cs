@@ -1,4 +1,5 @@
-﻿using DataInterface.Interfaces;
+﻿using System.Collections.Generic;
+using DataInterface.Interfaces;
 using DataInterface.Models;
 using Logic.Interfaces;
 using Logic.Mappers;
@@ -14,10 +15,21 @@ namespace Logic
             _requestData = requestData;
         }
 
+        public List<RequestLogicModel> GetAll()
+        {
+            List<RequestDataModel> dataRequests = _requestData.GetAll();
+            List<RequestLogicModel> logicRequests = new();
+            foreach (RequestDataModel dataRequest in dataRequests)
+                logicRequests.Add(RequestLogicMapper.DataToLogicRequestModel(dataRequest));
+            return logicRequests;
+        }
+
         public RequestLogicModel Create(int userId1, int userId2)
         {
-            RequestDataModel dataRequest = _requestData.Create(userId1, userId2);
-            return RequestLogicMapper.DataToLogicRequestModel(dataRequest);
+            RequestLogicModel logicRequest = new(userId1, userId2, false);
+            RequestDataModel dataRequest = RequestLogicMapper.LogicToDataRequestModel(logicRequest);
+            RequestDataModel returnRequest = _requestData.Create(dataRequest);
+            return RequestLogicMapper.DataToLogicRequestModel(returnRequest);
         }
 
         public int Accept(int requestId)

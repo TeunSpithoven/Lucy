@@ -12,7 +12,12 @@ namespace Logic.Mappers
     {
         public static RequestLogicModel DataToLogicRequestModel(RequestDataModel d)
         {
-            return new RequestLogicModel(d.Id, new UserLogicModel(d.User1), new UserLogicModel(d.User2), d.Confirmed);
+            return new (d.Id, d.User1, d.User2, d.Confirmed);
+        }
+
+        public static RequestDataModel LogicToDataRequestModel(RequestLogicModel l)
+        {
+            return new (l.User1, l.User2, l.Confirmed);
         }
     }
 }

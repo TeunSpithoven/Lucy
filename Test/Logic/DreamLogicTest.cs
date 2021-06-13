@@ -12,15 +12,15 @@ using System.Linq;
 namespace Test.Logic
 {
     [TestClass]
-    public class DreamLogicMemTest
+    public class DreamLogicTest
     {
         [TestMethod]
         public void AddDream()
         {
             //arrange
-            DreamMemData dreamMemData = new();
+            DreamTestData dreamMemData = new();
             DreamLogic dreamLogic = new(dreamMemData);
-            DreamMemData.Items.Clear();
+            DreamTestData.Items.Clear();
 
             int userId = 2;
             string title = "Title of the test logicDream";
@@ -32,10 +32,10 @@ namespace Test.Logic
             dreamLogic.AddDream(logicDream);
 
             //assert
-            int amountOfDreamsInMemory = DreamMemData.Items.Count;
+            int amountOfDreamsInMemory = DreamTestData.Items.Count;
             Assert.AreNotEqual(0, amountOfDreamsInMemory);
 
-            DreamDataModel firstDreamInMemory = DreamMemData.Items.First();
+            DreamDataModel firstDreamInMemory = DreamTestData.Items.First();
 
             Assert.AreEqual(dataDream.UserId, firstDreamInMemory.UserId);
             Assert.AreEqual(dataDream.Title, firstDreamInMemory.Title);
@@ -46,9 +46,9 @@ namespace Test.Logic
         public void RemoveDream_DreamExists_Success()
         {
             //arrange
-            DreamMemData dreamMemData = new();
+            DreamTestData dreamMemData = new();
             DreamLogic dreamLogic = new(dreamMemData);
-            DreamMemData.Items.Clear();
+            DreamTestData.Items.Clear();
 
             int id = 5;
             int userId = 2;
@@ -56,7 +56,7 @@ namespace Test.Logic
             string story = "Story of the test logicDream";
             DreamLogicModel logicDream = new(id, new UserLogicModel(userId), title, story);
             DreamDataModel dataDream = DreamLogicMapper.LogicToDataDreamModel(logicDream);
-            DreamMemData.Items.Add(dataDream);
+            DreamTestData.Items.Add(dataDream);
 
             //act
             int returnInt = dreamLogic.RemoveDream(5);
@@ -69,9 +69,9 @@ namespace Test.Logic
         public void RemoveDream_DreamDoesNotExist_Failed()
         {
             //arrange
-            DreamMemData dreamMemData = new();
+            DreamTestData dreamMemData = new();
             DreamLogic dreamLogic = new(dreamMemData);
-            DreamMemData.Items.Clear();
+            DreamTestData.Items.Clear();
 
             int id = 5;
             int userId = 2;
@@ -79,7 +79,7 @@ namespace Test.Logic
             string story = "Story of the test logicDream";
             DreamLogicModel logicDream = new(id, new UserLogicModel(userId), title, story);
             DreamDataModel dataDream = DreamLogicMapper.LogicToDataDreamModel(logicDream);
-            DreamMemData.Items.Add(dataDream);
+            DreamTestData.Items.Add(dataDream);
 
             //act
             int returnInt = dreamLogic.RemoveDream(4);
@@ -92,9 +92,9 @@ namespace Test.Logic
         public void GetDreams_OneDreamInList()
         {
             //arrange
-            DreamMemData dreamMemData = new();
+            DreamTestData dreamMemData = new();
             DreamLogic dreamLogic = new(dreamMemData);
-            DreamMemData.Items.Clear();
+            DreamTestData.Items.Clear();
 
             int id = 5;
             int userId = 2;
@@ -102,7 +102,7 @@ namespace Test.Logic
             string story = "Story of the test logicDream";
             DreamLogicModel logicDream = new(id, new UserLogicModel(userId), title, story);
             DreamDataModel dataDream = DreamLogicMapper.LogicToDataDreamModel(logicDream);
-            DreamMemData.Items.Add(dataDream);
+            DreamTestData.Items.Add(dataDream);
 
             //act
             List<DreamLogicModel> dataDreams = dreamLogic.GetDreams();
@@ -116,9 +116,9 @@ namespace Test.Logic
         public void GetDreamsByUserId_UserHasDream_Success()
         {
             //arrange
-            DreamMemData dreamMemData = new();
+            DreamTestData dreamMemData = new();
             DreamLogic dreamLogic = new(dreamMemData);
-            DreamMemData.Items.Clear();
+            DreamTestData.Items.Clear();
 
             int id = 5;
             int userId = 2;
@@ -126,7 +126,7 @@ namespace Test.Logic
             string story = "Story of the test logicDream";
             DreamLogicModel logicDream = new(id, new UserLogicModel(userId), title, story);
             DreamDataModel dataDream = DreamLogicMapper.LogicToDataDreamModel(logicDream);
-            DreamMemData.Items.Add(dataDream);
+            DreamTestData.Items.Add(dataDream);
 
             //act
             List<DreamLogicModel> logicDreams = dreamLogic.GetDreamsByUserId(userId);
@@ -140,9 +140,9 @@ namespace Test.Logic
         public void GetDreamsByUserId_UserHasNoDreams_Failed()
         {
             //arrange
-            DreamMemData dreamMemData = new();
+            DreamTestData dreamMemData = new();
             DreamLogic dreamLogic = new(dreamMemData);
-            DreamMemData.Items.Clear();
+            DreamTestData.Items.Clear();
 
             int id = 5;
             int userId = 2;
@@ -151,7 +151,7 @@ namespace Test.Logic
             string story = "Story of the test logicDream";
             DreamLogicModel logicDream = new(id, new UserLogicModel(userId), title, story);
             DreamDataModel dataDream = DreamLogicMapper.LogicToDataDreamModel(logicDream);
-            DreamMemData.Items.Add(dataDream);
+            DreamTestData.Items.Add(dataDream);
 
             //act
             List<DreamLogicModel> dataDreams = dreamLogic.GetDreamsByUserId(requestedUserId);
@@ -165,9 +165,9 @@ namespace Test.Logic
         public void GetDreamById_ExistingDream_Success()
         {
             //arrange
-            DreamMemData dreamMemData = new();
+            DreamTestData dreamMemData = new();
             DreamLogic dreamLogic = new(dreamMemData);
-            DreamMemData.Items.Clear();
+            DreamTestData.Items.Clear();
 
             int id = 5;
             int userId = 2;
@@ -175,7 +175,7 @@ namespace Test.Logic
             string story = "Story of the test logicDream";
             DreamLogicModel logicDream = new(id, new UserLogicModel(userId), title, story);
             DreamDataModel dataDream = DreamLogicMapper.LogicToDataDreamModel(logicDream);
-            DreamMemData.Items.Add(dataDream);
+            DreamTestData.Items.Add(dataDream);
 
             //act
             DreamLogicModel returnDream = dreamLogic.GetDreamById(id);
@@ -193,9 +193,9 @@ namespace Test.Logic
         public void GetDreamById_NonExistingDream_ReturnsNull()
         {
             //arrange
-            DreamMemData dreamMemData = new();
+            DreamTestData dreamMemData = new();
             DreamLogic dreamLogic = new(dreamMemData);
-            DreamMemData.Items.Clear();
+            DreamTestData.Items.Clear();
 
             int id = 5;
             int requestedId = 4;
@@ -204,7 +204,7 @@ namespace Test.Logic
             string story = "Story of the test logicDream";
             DreamLogicModel logicDream = new(id, new UserLogicModel(userId), title, story);
             DreamDataModel dataDream = DreamLogicMapper.LogicToDataDreamModel(logicDream);
-            DreamMemData.Items.Add(dataDream);
+            DreamTestData.Items.Add(dataDream);
 
             //act
             DreamLogicModel returnDream = dreamLogic.GetDreamById(requestedId);

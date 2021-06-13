@@ -1,5 +1,6 @@
 ﻿using DataInterface.Models;
 using Microsoft.EntityFrameworkCore;
+using View.Models;
 
 namespace View
 {

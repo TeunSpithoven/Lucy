@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Data.MemData
 {
-    public class DreamMemData : IDreamData
+    public class DreamTestData : IDreamData
     {
         public static List<DreamDataModel> Items = new();
         private static int _id;

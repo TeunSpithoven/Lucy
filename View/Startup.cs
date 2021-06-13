@@ -25,9 +25,16 @@ namespace View
         {
             services.AddScoped<IDreamData, DreamSqlData>();
             services.AddScoped<IDreamLogic, DreamLogic>();
+            
 
             services.AddScoped<IUserData, UserSqlData>();
             services.AddScoped<IUserLogic, UserLogic>();
+
+            services.AddScoped<IRequestData, RequestSqlData>();
+            services.AddScoped<IRequestLogic, RequestLogic>();
+
+            services.AddScoped<ICommentData, CommentSqlData>();
+            services.AddScoped<ICommentLogic, CommentLogic>();
 
             // configuration van de databaseconnectie in startup
             services.AddDbContext<ApplicationDbContext>(options =>

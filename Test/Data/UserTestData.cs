@@ -8,7 +8,7 @@ using DataInterface.Models;
 
 namespace Data.MemData
 {
-    public class UserMemData : IUserData
+    public class UserTestData : IUserData
     {
         public static List<UserDataModel> Items = new();
 

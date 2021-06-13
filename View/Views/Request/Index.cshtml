@@ -1,0 +1,58 @@
+﻿@using Microsoft.CodeAnalysis.CSharp.Syntax
+@model IEnumerable<View.Models.RequestViewModel>
+
+@{
+    ViewData["Title"] = "Requests";
+}
+
+<h1>All Requests</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Confirmed)
+            </th>
+            <th>
+                Accept/Deny
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Confirmed)
+                </td>
+                <td>
+                    @{
+                        if (item.Confirmed)
+                        {
+                            <a asp-action="Deny" asp-route-id="@item.Id">Deny</a>
+                        }
+                        else
+                        {
+                            <a asp-action="Accept" asp-route-id="@item.Id">Accept</a><a> - </a><a asp-action="Deny" asp-route-id="@item.Id">Deny</a>
+                        }
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
