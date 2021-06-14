@@ -56,6 +56,5 @@ namespace Test.Logic
             Assert.AreEqual(7, returnRequest.User1);
             Assert.AreEqual(20, returnRequest.User2);
         }
-        
     }
 }

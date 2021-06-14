@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using System.Linq;
 using DataInterface.Interfaces;
 using DataInterface.Models;
@@ -23,12 +24,14 @@ namespace Logic
             IList<ValidationResult> errors = new List<ValidationResult>();
             Validator.TryValidateObject(logicDream, context, errors);
 
-            if (errors.Any()) return null;
+            if (errors.Any())
+            {
+                throw new ValidationException("AddDream failed to validate.");
+            }
 
             DreamDataModel dataDream = DreamLogicMapper.LogicToDataDreamModel(logicDream);
             DreamDataModel addedDream = _dreamData.AddDream(dataDream);
             return DreamLogicMapper.DataToLogicDreamModel(addedDream);
-
         }
 
         public int RemoveDream(int id)
