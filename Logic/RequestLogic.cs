@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using DataInterface.Interfaces;
 using DataInterface.Models;
 using Logic.Interfaces;
@@ -26,6 +27,7 @@ namespace Logic
 
         public RequestLogicModel Create(int userId1, int userId2)
         {
+            if (userId1 == userId2) throw new DuplicateNameException("Both userId's are the same");
             RequestLogicModel logicRequest = new(userId1, userId2, false);
             RequestDataModel dataRequest = RequestLogicMapper.LogicToDataRequestModel(logicRequest);
             RequestDataModel returnRequest = _requestData.Create(dataRequest);

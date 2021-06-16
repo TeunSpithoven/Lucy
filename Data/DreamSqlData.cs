@@ -36,7 +36,7 @@ namespace Data.SqlData
             List<DreamDataModel> returnList = new();
 
             using SqlConnection conn = new(DataBaseConnection.String);
-            using SqlCommand query = new("select Id, UserId, Title, Story, CreationDateTime from Dream", conn);
+            using SqlCommand query = new("select Id, UserId, Title, Story, CreationDateTime from Dream ORDER BY CreationDateTime DESC", conn);
             //database connectie openen
             conn.Open();
 

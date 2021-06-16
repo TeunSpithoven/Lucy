@@ -13,10 +13,17 @@ namespace Data.SqlData
             List<RequestDataModel> returnList = new();
             using SqlConnection conn = new(DataBaseConnection.String);
             using SqlCommand query = new("SELECT * FROM Request", conn);
+            SqlDataReader reader;
+            try
+            {
+                conn.Open();
+                reader = query.ExecuteReader();
+            }
+            catch
+            {
+                throw new Exception("RequestSql GetAll failed.");
+            }
 
-            conn.Open();
-
-            var reader = query.ExecuteReader();
             if (!reader.HasRows) return returnList;
             while (reader.Read())
             {
@@ -37,10 +44,16 @@ namespace Data.SqlData
             List<RequestDataModel> returnList = new();
             using SqlConnection conn = new(DataBaseConnection.String);
             using SqlCommand query = new($"SELECT * FROM Request WHERE Id = '{id}'", conn);
-
-            conn.Open();
-
-            var reader = query.ExecuteReader();
+            SqlDataReader reader;
+            try
+            {
+                conn.Open();
+                reader = query.ExecuteReader();
+            }
+            catch
+            {
+                throw new Exception("RequestSql GetById failed.");
+            }
             int userId1 = Convert.ToInt32(reader["User1"]);
             int userId2 = Convert.ToInt32(reader["User2"]);
             bool confirmed = Convert.ToBoolean(reader["Confirmed"]);
@@ -53,10 +66,16 @@ namespace Data.SqlData
             List<RequestDataModel> returnList = new();
             using SqlConnection conn = new(DataBaseConnection.String);
             using SqlCommand query = new($"SELECT * FROM Request WHERE User2 = {userId}", conn);
-
-            conn.Open();
-
-            var reader = query.ExecuteReader();
+            SqlDataReader reader;
+            try
+            {
+                conn.Open();
+                reader = query.ExecuteReader();
+            }
+            catch
+            {
+                throw new Exception("RequestSql GetReceivedByUserId failed.");
+            }
             while (reader.Read())
             {
                 int id = Convert.ToInt32(reader["Id"]);
@@ -76,10 +95,17 @@ namespace Data.SqlData
             List<RequestDataModel> returnList = new();
             using SqlConnection conn = new(DataBaseConnection.String);
             using SqlCommand query = new($"SELECT * FROM Request WHERE User1 = {userId}", conn);
-
-            conn.Open();
-
-            var reader = query.ExecuteReader();
+            SqlDataReader reader;
+            try
+            {
+                conn.Open();
+                reader = query.ExecuteReader();
+            }
+            catch
+            {
+                throw new Exception("RequestSql GetSentByUserId failed.");
+            }
+            
             while (reader.Read())
             {
                 int id = Convert.ToInt32(reader["Id"]);
@@ -96,15 +122,23 @@ namespace Data.SqlData
 
         public RequestDataModel Create(RequestDataModel dataRequest)
         {
+            int newId;
             using SqlConnection conn = new(DataBaseConnection.String);
             using SqlCommand query = new("INSERT INTO Request (User1, User2, Confirmed) " +
-                                         "OUTPUT INSERT.ID VALUES (@User1, @User2, @Confirmed)", conn);
+                                         "OUTPUT INSERTED.ID VALUES (@User1, @User2, @Confirmed)", conn);
             query.Parameters.AddWithValue("@User1", dataRequest.User1);
             query.Parameters.AddWithValue("@User2", dataRequest.User2);
             query.Parameters.AddWithValue("@Confirmed", false);
 
-            conn.Open();
-            int newId = (int)query.ExecuteScalar();
+            try
+            {
+                conn.Open();
+                newId = (int)query.ExecuteScalar();
+            }
+            catch
+            {
+                throw new Exception("Sql Create Request failed.");
+            }
 
             return new RequestDataModel(newId, dataRequest.User1, dataRequest.User2, false);
         }
@@ -116,7 +150,14 @@ namespace Data.SqlData
             query.Parameters.AddWithValue("@Id", requestId);
 
             conn.Open();
-            query.ExecuteNonQuery();
+            try
+            {
+                query.ExecuteNonQuery();
+            }
+            catch
+            {
+                throw new KeyNotFoundException($"Accept request with id:{requestId} failed.");
+            }
 
             return requestId;
         }
@@ -128,7 +169,14 @@ namespace Data.SqlData
             query.Parameters.AddWithValue("@Id", requestId);
 
             conn.Open();
-            query.ExecuteNonQuery();
+            try
+            {
+                query.ExecuteNonQuery();
+            }
+            catch
+            {
+                throw new KeyNotFoundException($"Deny request with id:{requestId} failed.");
+            }
             return requestId;
         }
     }
