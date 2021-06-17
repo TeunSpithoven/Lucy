@@ -51,10 +51,9 @@ namespace View.Controllers
 
         // adds a dream when user posts data
         [HttpPost]
-        public IActionResult Create(int id, int userId, string title, string story)
+        public IActionResult Create(int userId, string title, string story)
         {
-            DreamLogicModel logicDream = new(id, new UserLogicModel(userId), title, story);
-            _dreamLogic.AddDream(logicDream);
+            _dreamLogic.Create(userId, title, story);
             return RedirectToAction(nameof(Index));
         }
 

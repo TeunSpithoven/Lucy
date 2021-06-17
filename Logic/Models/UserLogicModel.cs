@@ -23,5 +23,9 @@ namespace Logic.Models
         {
             this.Id = userId;
         }
+
+        public UserLogicModel()
+        {
+        }
     }
 }

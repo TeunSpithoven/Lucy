@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using DataInterface.Interfaces;
 using DataInterface.Models;
 
-namespace Data.SqlData
+namespace Data
 {
     public class DreamSqlData : IDreamData
     {
@@ -23,9 +21,17 @@ namespace Data.SqlData
             query.Parameters.AddWithValue("@Story", dataDream.Story);
             DateTime now = DateTime.Now;
             query.Parameters.AddWithValue("@CreationDateTime", now);
-            
-            conn.Open();
-            int newId = (int)query.ExecuteScalar();
+
+            int newId;
+            try
+            {
+                conn.Open();
+                newId = (int)query.ExecuteScalar();
+            }
+            catch
+            {
+                throw new Exception("DreamSqlData GetAll failed.");
+            }
 
             return new DreamDataModel(newId, dataDream.UserId, dataDream.Title, dataDream.Story, now);
         }
@@ -38,9 +44,17 @@ namespace Data.SqlData
             using SqlConnection conn = new(DataBaseConnection.String);
             using SqlCommand query = new("select Id, UserId, Title, Story, CreationDateTime from Dream ORDER BY CreationDateTime DESC", conn);
             //database connectie openen
-            conn.Open();
+            SqlDataReader reader;
+            try
+            {
+                conn.Open();
+                reader = query.ExecuteReader();
+            }
+            catch
+            {
+                throw new Exception("DreamSqlData GetDreams failed.");
+            }
 
-            var reader = query.ExecuteReader();
             while (reader.Read())
             {
                 // pakt voor alle dromen in de database uit de kolommen de data en zet die om naar een object.
@@ -63,10 +77,19 @@ namespace Data.SqlData
             List<DreamDataModel> returnList = new();
             using SqlConnection conn = new(DataBaseConnection.String);
             using SqlCommand query = new("select Id, UserId, Title, Story, CreationDateTime from Dream WHERE UserId = @UserId;", conn);
-            //database connectie openen
-            conn.Open();
             query.Parameters.AddWithValue("@UserId", userId);
-            var reader = query.ExecuteReader();
+
+            SqlDataReader reader;
+            try
+            {
+                conn.Open();
+                reader = query.ExecuteReader();
+            }
+            catch
+            {
+                throw new Exception("DreamSqlData GetDreamsByUserId failed.");
+            }
+
             while (reader.Read())
             {
                 // pakt voor alle dromen in de database uit de kolommen de data en zet die om naar een object.
@@ -89,10 +112,18 @@ namespace Data.SqlData
         {
             using SqlConnection conn = new(DataBaseConnection.String);
             using SqlCommand query = new("select Id, UserId, CreationDateTime, Title, Story from Dream WHERE Id = @Id;", conn);
-            //database connectie openen
-            conn.Open();
             query.Parameters.AddWithValue("@Id", id);
-            var reader = query.ExecuteReader();
+
+            SqlDataReader reader;
+            try
+            {
+                conn.Open();
+                reader = query.ExecuteReader();
+            }
+            catch
+            {
+                throw new Exception("DreamSqlData GetDreamById failed.");
+            }
 
             reader.Read();
             // pakt voor alle dromen in de database uit de kolommen de data en zet die om naar een object.
@@ -111,10 +142,18 @@ namespace Data.SqlData
         {
             using SqlConnection conn = new(DataBaseConnection.String);
             using SqlCommand query = new("DELETE FROM Dream WHERE ID = @id;", conn);
-            //database connectie openen
-            conn.Open();
             query.Parameters.AddWithValue("@id", id);
-            query.ExecuteNonQuery();
+            
+            try
+            {
+                conn.Open();
+                query.ExecuteNonQuery();
+            }
+            catch
+            {
+                throw new Exception("DreamSqlData RemoveDreamById failed.");
+            }
+
             return id;
         }
     }

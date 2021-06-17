@@ -5,7 +5,7 @@ namespace Logic.Interfaces
 {
     public interface IDreamLogic
     {
-        public DreamLogicModel AddDream(DreamLogicModel logicDream);
+        public DreamLogicModel Create(int userId, string title, string story);
         public int RemoveDream(int id);
         public List<DreamLogicModel> GetDreams();
         public List<DreamLogicModel> GetDreamsByUserId(int userId);

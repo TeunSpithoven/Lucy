@@ -18,7 +18,7 @@ namespace Logic
         public void Create(UserLogicModel logicUser)
         {
             UserDataModel dataUser = UserLogicMapper.LogicToDataUserModel(logicUser); 
-            _userData.Create(dataUser);
+            _userData.AddUser(dataUser);
         }
 
         public void Login(UserLogicModel logicUser)

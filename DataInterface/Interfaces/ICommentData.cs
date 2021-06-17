@@ -9,6 +9,6 @@ namespace DataInterface.Interfaces
         public List<CommentDataModel> GetByUserId(int userId);
         public CommentDataModel GetById(int id);
         public List<CommentDataModel> GetByDreamId(int dreamId);
-        public CommentDataModel Create(CommentDataModel dataComment);
+        public CommentDataModel AddComment(CommentDataModel dataComment);
     }
 }

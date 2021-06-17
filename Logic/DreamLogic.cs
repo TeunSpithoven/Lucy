@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.IO;
 using System.Linq;
 using DataInterface.Interfaces;
 using DataInterface.Models;
@@ -18,15 +17,14 @@ namespace Logic
             _dreamData = dreamData;
         }
 
-        public DreamLogicModel AddDream(DreamLogicModel logicDream)
+        public DreamLogicModel Create(int userId, string title, string story)
         {
+            DreamLogicModel logicDream = new(userId, title, story);
             ValidationContext context = new(logicDream);
             IList<ValidationResult> errors = new List<ValidationResult>();
-            Validator.TryValidateObject(logicDream, context, errors);
-
-            if (errors.Any())
+            if (!Validator.TryValidateObject(logicDream, context, errors))
             {
-                throw new ValidationException("AddDream failed to validate.");
+                throw new ValidationException("DreamLogic Create validation failed");
             }
 
             DreamDataModel dataDream = DreamLogicMapper.LogicToDataDreamModel(logicDream);
@@ -36,6 +34,13 @@ namespace Logic
 
         public int RemoveDream(int id)
         {
+            ValidationContext context = new ValidationContext(new DreamLogicModel()) { MemberName = "Id" };
+            IList<ValidationResult> errors = new List<ValidationResult>();
+            
+            if (!Validator.TryValidateProperty(id, context, errors))
+            {
+                throw new ValidationException("DreamLogic RemoveDream validation failed");
+            }
             return _dreamData.RemoveDreamById(id);
         }
 
@@ -43,6 +48,7 @@ namespace Logic
         {
             List<DreamDataModel> conDreams = _dreamData.GetDreams();
             List<DreamLogicModel> logicDreams = new();
+
             foreach (var conDream in conDreams)
             {
                 DreamLogicModel newLogicDream = DreamLogicMapper.DataToLogicDreamModel(conDream);
@@ -53,6 +59,12 @@ namespace Logic
 
         public List<DreamLogicModel> GetDreamsByUserId(int userId)
         {
+            ValidationContext context = new ValidationContext(new DreamLogicModel()) { MemberName = "UserId" };
+            IList<ValidationResult> errors = new List<ValidationResult>();
+            if (!Validator.TryValidateProperty(userId, context, errors))
+            {
+                throw new ValidationException("DreamLogic GetDreamsByUserId validation failed");
+            }
             List<DreamDataModel> conDreams = _dreamData.GetDreamsByUserId(userId);
             List<DreamLogicModel> logicDreams = new();
             foreach (var conDream in conDreams)
@@ -65,9 +77,16 @@ namespace Logic
 
         public DreamLogicModel GetDreamById(int id)
         {
+            ValidationContext context = new ValidationContext(new DreamLogicModel()) {MemberName = "Id"};
+            IList<ValidationResult> errors = new List<ValidationResult>();
+            
+            if (!Validator.TryValidateProperty(id, context, errors))
+            {
+                throw new ValidationException("DreamLogic GetDreamsByUserId validation failed");
+            }
             DreamDataModel conDream = _dreamData.GetDreamById(id);
-            DreamLogicModel logicDream = DreamLogicMapper.DataToLogicDreamModel(conDream);
-            return logicDream;
+            DreamLogicModel returnDream = DreamLogicMapper.DataToLogicDreamModel(conDream);
+            return returnDream;
         }
     }
 }

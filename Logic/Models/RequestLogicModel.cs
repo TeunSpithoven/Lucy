@@ -1,9 +1,16 @@
-﻿namespace Logic.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Logic.Models
 {
     public class RequestLogicModel
     {
+        [Range(0, double.PositiveInfinity)]
         public int Id { get; set; }
+        [Required]
+        [Range(0, double.PositiveInfinity)]
         public int User1 { get; set; }
+        [Required]
+        [Range(0, double.PositiveInfinity)]
         public int User2 { get; set; }
         public bool Confirmed { get; set; }
 

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataInterface.Interfaces;
 using DataInterface.Models;
 
@@ -25,15 +23,15 @@ namespace Test.Data
 
         public List<RequestDataModel> GetReceivedByUserId(int userId)
         {
-            throw new NotImplementedException();
+            return Items.Where(x => x.User2 == userId).ToList();
         }
 
         public List<RequestDataModel> GetSentByUserId(int userId)
         {
-            throw new NotImplementedException();
+            return Items.Where(x => x.User1 == userId).ToList();
         }
 
-        public RequestDataModel Create(RequestDataModel dataRequest)
+        public RequestDataModel AddRequest(RequestDataModel dataRequest)
         {
             RequestDataModel newRequest = new(_id, dataRequest.User1, dataRequest.User2, dataRequest.Confirmed);
             _id++;

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Logic.Interfaces;
 using Logic.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using View;
 using View.Mappers;
 using View.Models;
 
@@ -44,7 +38,7 @@ namespace View.Controllers
         [HttpPost]
         public IActionResult Create(int userId, string message, int dreamId)
         {
-            _commentLogic.Create(message, userId, dreamId);
+            _commentLogic.Create(userId, message, dreamId);
             return RedirectToAction(nameof(Index));
         }
     }

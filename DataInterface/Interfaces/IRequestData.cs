@@ -9,7 +9,7 @@ namespace DataInterface.Interfaces
         public RequestDataModel GetById(int id);
         public List<RequestDataModel> GetReceivedByUserId(int userId);
         public List<RequestDataModel> GetSentByUserId(int userId);
-        public RequestDataModel Create(RequestDataModel dataRequest);
+        public RequestDataModel AddRequest(RequestDataModel dataRequest);
         public int Accept(int requestId);
         public int Deny(int requestId);
     }

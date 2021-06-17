@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataInterface.Interfaces;
 using DataInterface.Models;
 using Microsoft.Data.SqlClient;
 
-namespace Data.SqlData
+namespace Data
 {
     public class CommentSqlData : ICommentData
     {
@@ -16,9 +13,18 @@ namespace Data.SqlData
             List<CommentDataModel> dataComments = new();
             using SqlConnection conn = new(DataBaseConnection.String);
             using SqlCommand query = new("SELECT * FROM Comment", conn);
+
+            SqlDataReader reader;
+            try
+            {
+                conn.Open();
+                reader = query.ExecuteReader();
+            }
+            catch
+            {
+                throw new Exception("CommentSqlData GetAll failed.");
+            }
             
-            conn.Open();
-            var reader = query.ExecuteReader();
 
             if (!reader.HasRows) return dataComments;
             while (reader.Read())
@@ -28,6 +34,8 @@ namespace Data.SqlData
 
         public List<CommentDataModel> GetByUserId(int userId)
         {
+            using SqlConnection conn = new SqlConnection(DataBaseConnection.String);
+            using SqlCommand query = new($"SELECT * FROM Comment WHERE UserId = '{userId}'");
             throw new NotImplementedException();
         }
 
@@ -41,7 +49,7 @@ namespace Data.SqlData
             throw new NotImplementedException();
         }
 
-        public CommentDataModel Create(CommentDataModel dataComment)
+        public CommentDataModel AddComment(CommentDataModel dataComment)
         {
             using SqlConnection conn = new(DataBaseConnection.String);
             using SqlCommand query = new($"INSERT INTO Comment (UserId, Message, DreamId) OUTPUT INSERTED.ID VALUES (@UserId, @Message, @DreamId)", conn);
@@ -50,8 +58,16 @@ namespace Data.SqlData
             query.Parameters.AddWithValue("@Message", dataComment.Message);
             query.Parameters.AddWithValue("@DreamId", dataComment.DreamId);
 
-            conn.Open();
-            int newId = (int)query.ExecuteScalar();
+            int newId;
+            try
+            {
+                conn.Open();
+                newId = (int)query.ExecuteScalar();
+            }
+            catch
+            {
+                throw new Exception("CommentSqlData AddComment failed.");
+            }
 
             return new(newId, dataComment.UserId, dataComment.Message, dataComment.DreamId);
         }

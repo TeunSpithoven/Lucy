@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using DataInterface.Interfaces;
 using DataInterface.Models;
 using Logic.Interfaces;
@@ -39,11 +40,14 @@ namespace Logic
             throw new System.NotImplementedException();
         }
 
-        public CommentLogicModel Create(string message, int userId, int dreamId)
+        public CommentLogicModel Create(int userId, string message, int dreamId)
         {
-            CommentLogicModel logicComment = new(userId, message, dreamId);
-            CommentDataModel dataComment = CommentLogicMapper.LogicToDataCommentModel(logicComment);
-            CommentDataModel returnComment = _commentData.Create(dataComment);
+            if (userId < 1 || dreamId < 1)
+            {
+                throw new ValidationException("CommentLogic Create validation failed");
+            }
+            CommentDataModel dataComment = CommentLogicMapper.LogicToDataCommentModel(new CommentLogicModel(userId, message, dreamId));
+            CommentDataModel returnComment = _commentData.AddComment(dataComment);
             return CommentLogicMapper.DataToLogicCommentModel(returnComment);
         }
     }

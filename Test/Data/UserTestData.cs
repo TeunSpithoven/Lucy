@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using DataInterface.Interfaces;
 using DataInterface.Models;
 
-namespace Data.MemData
+namespace Test.Data
 {
     public class UserTestData : IUserData
     {
         public static List<UserDataModel> Items = new();
 
-        public void Create(UserDataModel dataUser)
+        public void AddUser(UserDataModel dataUser)
         {
             Items.Add(dataUser);
         }

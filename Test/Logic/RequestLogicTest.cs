@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Data.SqlData;
+﻿using System.Collections.Generic;
 using DataInterface.Models;
 using Logic;
 using Logic.Models;
@@ -53,6 +48,7 @@ namespace Test.Logic
 
             RequestLogicModel returnRequest = requestLogic.Create(7, 20);
 
+            Assert.IsNotNull(returnRequest.Id);
             Assert.AreEqual(7, returnRequest.User1);
             Assert.AreEqual(20, returnRequest.User2);
         }

@@ -1,10 +1,10 @@
-﻿using DataInterface.Interfaces;
+﻿using System;
+using System.Collections.Generic;
+using DataInterface.Interfaces;
 using DataInterface.Models;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
 
-namespace Data.SqlData
+namespace Data
 {
     public class RequestSqlData : IRequestData
     {
@@ -76,6 +76,7 @@ namespace Data.SqlData
             {
                 throw new Exception("RequestSql GetReceivedByUserId failed.");
             }
+
             while (reader.Read())
             {
                 int id = Convert.ToInt32(reader["Id"]);
@@ -120,7 +121,7 @@ namespace Data.SqlData
             return returnList;
         }
 
-        public RequestDataModel Create(RequestDataModel dataRequest)
+        public RequestDataModel AddRequest(RequestDataModel dataRequest)
         {
             int newId;
             using SqlConnection conn = new(DataBaseConnection.String);
@@ -177,6 +178,7 @@ namespace Data.SqlData
             {
                 throw new KeyNotFoundException($"Deny request with id:{requestId} failed.");
             }
+
             return requestId;
         }
     }

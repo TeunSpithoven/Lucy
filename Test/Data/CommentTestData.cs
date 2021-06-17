@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataInterface.Interfaces;
 using DataInterface.Models;
 
@@ -10,31 +8,34 @@ namespace Test.Data
 {
     public class CommentTestData : ICommentData
     {
-        public static List<CommentDataModel> Items;
+        public static List<CommentDataModel> Items = new();
         private static int _id;
         public List<CommentDataModel> GetAll()
         {
-            throw new NotImplementedException();
+            return Items;
         }
 
         public List<CommentDataModel> GetByUserId(int userId)
         {
-            throw new NotImplementedException();
+            return Items.Where(x => x.UserId == userId).ToList();
         }
 
         public CommentDataModel GetById(int id)
         {
-            throw new NotImplementedException();
+            return Items.Find(x => x.Id == id);
         }
 
         public List<CommentDataModel> GetByDreamId(int dreamId)
         {
-            throw new NotImplementedException();
+            return Items.Where(x => x.DreamId == dreamId).ToList();
         }
 
-        public CommentDataModel Create(CommentDataModel dataComment)
+        public CommentDataModel AddComment(CommentDataModel dataComment)
         {
-            throw new NotImplementedException();
+            dataComment.Id = _id;
+            _id++;
+            Items.Add(dataComment);
+            return dataComment;
         }
     }
 }
