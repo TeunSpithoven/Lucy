@@ -44,7 +44,7 @@ namespace Logic
 
         public int Accept(int requestId)
         {
-            ValidationContext context = new(new RequestLogicModel());
+            ValidationContext context = new(new RequestLogicModel()) { MemberName = "Id" };
             IList<ValidationResult> errors = new List<ValidationResult>();
             if (!Validator.TryValidateProperty(requestId, context, errors))
             {
@@ -55,7 +55,7 @@ namespace Logic
 
         public int Deny(int requestId)
         {
-            ValidationContext context = new(new RequestLogicModel());
+            ValidationContext context = new(new RequestLogicModel()) { MemberName = "Id" };
             IList<ValidationResult> errors = new List<ValidationResult>();
             if (!Validator.TryValidateProperty(requestId, context, errors))
             {

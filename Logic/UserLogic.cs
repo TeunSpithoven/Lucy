@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using DataInterface.Interfaces;
 using DataInterface.Models;
 using Logic.Interfaces;
@@ -15,8 +16,15 @@ namespace Logic
             _userData = userData;
         }
 
-        public void Create(UserLogicModel logicUser)
+        public void Create(int id, string username, string password)
         {
+            ValidationContext context = new ValidationContext(new DreamLogicModel());
+            IList<ValidationResult> errors = new List<ValidationResult>();
+            UserLogicModel logicUser = new(id, username, password, false);
+            if (!Validator.TryValidateObject(logicUser, context, errors))
+            {
+                throw new ValidationException("DreamLogic GetDreamsByUserId validation failed");
+            }
             UserDataModel dataUser = UserLogicMapper.LogicToDataUserModel(logicUser); 
             _userData.AddUser(dataUser);
         }
