@@ -18,6 +18,7 @@ namespace Logic
 
         public List<CommentLogicModel> GetAll()
         {
+            //gets all comments from data source
             List<CommentLogicModel> logicComments = new();
             List<CommentDataModel> dataComments = _commentData.GetAll();
             foreach(CommentDataModel dataComment in dataComments)
@@ -27,21 +28,50 @@ namespace Logic
 
         public List<CommentLogicModel> GetByUserId(int userId)
         {
-            throw new System.NotImplementedException();
+            //gets all comments from data source where userId is the given userId
+            if(userId < 1)
+            {
+                throw new ValidationException("Validation for Commentlogic GetByUserId failed.");
+            }
+            List<CommentDataModel> dataList = _commentData.GetByUserId(userId);
+            List<CommentLogicModel> returnList = new();
+            foreach (CommentDataModel dataComment in dataList)
+            {
+                returnList.Add(CommentLogicMapper.DataToLogicCommentModel(dataComment));
+            }
+            return returnList;
         }
 
         public CommentLogicModel GetById(int id)
         {
-            throw new System.NotImplementedException();
+            //gets the comment from data source where id = given id
+            if (id < 1)
+            {
+                throw new ValidationException("Validation for Commentlogic GetById failed.");
+            }
+            CommentDataModel dataComment = _commentData.GetById(id);
+            return CommentLogicMapper.DataToLogicCommentModel(dataComment);
         }
 
         public List<CommentLogicModel> GetByDreamId(int dreamId)
         {
-            throw new System.NotImplementedException();
+            //gets all comments where dreamId = given dreamId
+            if (dreamId < 1)
+            {
+                throw new ValidationException("Validation for Commentlogic GetByDreamId failed.");
+            }
+            List<CommentDataModel> dataList = _commentData.GetByUserId(dreamId);
+            List<CommentLogicModel> returnList = new();
+            foreach (CommentDataModel dataComment in dataList)
+            {
+                returnList.Add(CommentLogicMapper.DataToLogicCommentModel(dataComment));
+            }
+            return returnList;
         }
 
         public CommentLogicModel Create(int userId, string message, int dreamId)
         {
+            //creates a new comment and saves it
             if (userId < 1 || dreamId < 1)
             {
                 throw new ValidationException("CommentLogic Create validation failed");

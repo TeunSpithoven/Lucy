@@ -22,8 +22,7 @@ namespace View.Controllers
         [HttpPost]
         public IActionResult Register(int id, string username, string password)
         {
-            UserLogicModel logicUser = new(id, username, password, false, DateTime.Now);
-            _userLogic.Create(logicUser);
+            _userLogic.Create(id, username, password);
             return RedirectToAction("Index", "Home");
         }
 

@@ -42,6 +42,7 @@ namespace Logic
             return RequestLogicMapper.DataToLogicRequestModel(returnRequest);
         }
 
+        // TODO: return RequestLogicModel instead of int for testability
         public int Accept(int requestId)
         {
             ValidationContext context = new(new RequestLogicModel()) { MemberName = "Id" };
@@ -53,6 +54,7 @@ namespace Logic
             return _requestData.Accept(requestId);
         }
 
+        // TODO: return RequestLogicModel instead of int for testabiity
         public int Deny(int requestId)
         {
             ValidationContext context = new(new RequestLogicModel()) { MemberName = "Id" };

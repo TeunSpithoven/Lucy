@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using DataInterface.Models;
 using Logic;
 using Logic.Models;
@@ -51,6 +52,44 @@ namespace Test.Logic
             Assert.IsNotNull(returnRequest.Id);
             Assert.AreEqual(7, returnRequest.User1);
             Assert.AreEqual(20, returnRequest.User2);
+        }
+
+        //[TestMethod]
+        //public void Accept_Success()
+        //{
+        //    RequestLogic requestLogic = new(new RequestTestData());
+        //    RequestTestData.Items.Add(new RequestDataModel(1, 3, 6, false));
+        
+        //    RequestLogicModel returnRequest = requestLogic.Accept(1);
+
+        //    Assert.AreEqual(true, returnRequest.Confirmed);
+        //}
+
+        [TestMethod]
+        [ExpectedException(typeof(ValidationException), "RequestLogic Accept validation failed")]
+        public void Accept_ThrowsException()
+        {
+            RequestLogic requestLogic = new(new RequestTestData());
+            requestLogic.Accept(-3);
+        }
+
+        //[TestMethod]
+        //public void Deny_Success()
+        //{
+        //    RequestLogic requestLogic = new(new RequestTestData());
+        //    RequestTestData.Items.Add(new RequestDataModel(1, 3, 6, false));
+
+        //    RequestLogicModel returnRequest = requestLogic.Deny(1);
+
+        //    Assert.AreEqual(false, returnRequest.Confirmed);
+        //}
+
+        [TestMethod]
+        [ExpectedException(typeof(ValidationException), "RequestLogic Deny validation failed")]
+        public void Deny_ThrowsException()
+        {
+            RequestLogic requestLogic = new(new RequestTestData());
+            requestLogic.Deny(-1);
         }
     }
 }
