@@ -35,18 +35,67 @@ namespace Data
         public List<CommentDataModel> GetByUserId(int userId)
         {
             using SqlConnection conn = new SqlConnection(DataBaseConnection.String);
-            using SqlCommand query = new($"SELECT * FROM Comment WHERE UserId = '{userId}'");
-            throw new NotImplementedException();
+            using SqlCommand query = new($"SELECT * FROM Comment WHERE UserId = '{userId}'", conn);
+            SqlDataReader reader;
+            try
+            {
+                conn.Open();
+                reader = query.ExecuteReader();
+            }
+            catch
+            {
+                throw new Exception("CommentSqlData GetByUserId failed.");
+            }
+            List<CommentDataModel> returnList = new();
+            while (reader.Read())
+            {
+                returnList.Add(new CommentDataModel(Convert.ToInt32(reader["Id"]), Convert.ToInt32(reader["UserId"]), Convert.ToString(reader["Message"]), Convert.ToInt32(reader["DreamId"])));
+            }
+            return returnList;
         }
 
         public CommentDataModel GetById(int id)
         {
-            throw new NotImplementedException();
+            using SqlConnection conn = new SqlConnection(DataBaseConnection.String);
+            using SqlCommand query = new($"SELECT * FROM Comment WHERE Id = '{id}'", conn);
+            SqlDataReader reader;
+            try
+            {
+                conn.Open();
+                reader = query.ExecuteReader();
+            }
+            catch
+            {
+                throw new Exception("CommentSqlData GetById failed.");
+            }
+            List<CommentDataModel> returnList = new();
+            while (reader.Read())
+            {
+                returnList.Add(new CommentDataModel(Convert.ToInt32(reader["Id"]), Convert.ToInt32(reader["UserId"]), Convert.ToString(reader["Message"]), Convert.ToInt32(reader["DreamId"])));
+            }
+            return returnList[0];
         }
 
         public List<CommentDataModel> GetByDreamId(int dreamId)
         {
-            throw new NotImplementedException();
+            using SqlConnection conn = new SqlConnection(DataBaseConnection.String);
+            using SqlCommand query = new($"SELECT * FROM Comment WHERE DreamId = '{dreamId}'", conn);
+            SqlDataReader reader;
+            try
+            {
+                conn.Open();
+                reader = query.ExecuteReader();
+            }
+            catch
+            {
+                throw new Exception("CommentSqlData GetByDreamId failed.");
+            }
+            List<CommentDataModel> returnList = new();
+            while (reader.Read())
+            {
+                returnList.Add(new CommentDataModel(Convert.ToInt32(reader["Id"]), Convert.ToInt32(reader["UserId"]), Convert.ToString(reader["Message"]), Convert.ToInt32(reader["DreamId"])));
+            }
+            return returnList;
         }
 
         public CommentDataModel AddComment(CommentDataModel dataComment)
