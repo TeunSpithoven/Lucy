@@ -1,4 +1,6 @@
-﻿using Logic.Models;
+﻿using System.Collections.Generic;
+using Logic.Mappers;
+using Logic.Models;
 using View.Models;
 
 namespace View.Mappers
@@ -7,7 +9,12 @@ namespace View.Mappers
     {
         public static DreamViewModel LogicToViewDreamModel(DreamLogicModel logicDream)
         {
-            DreamViewModel viewDream = new(logicDream.Id, logicDream.UserId, logicDream.Title, logicDream.Story, logicDream.CreationDateTime);
+            List<CommentViewModel> viewComments = new();
+            foreach (var comment in logicDream.Comments)
+            {
+                viewComments.Add(CommentViewMapper.LogicToViewCommentModel(comment));
+            }
+            DreamViewModel viewDream = new(logicDream.Id, logicDream.UserId, logicDream.Title, logicDream.Story, logicDream.CreationDateTime, viewComments);
             return viewDream;
         }
     }

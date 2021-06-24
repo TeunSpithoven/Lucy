@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DataInterface.Models
@@ -13,13 +14,17 @@ namespace DataInterface.Models
         public string Story { get; set; }
         public DateTime CreationDateTime { get; set; }
 
-        public DreamDataModel(int id, int userId, string title, string story, DateTime creationDateTime)
+        public List<CommentDataModel> Comments { get; set; }
+
+
+        public DreamDataModel(int id, int userId, string title, string story, DateTime creationDateTime, List<CommentDataModel> comments)
         {
             Id = id;
             UserId = userId;
             Title = title;
             Story = story;
             CreationDateTime = creationDateTime;
+            Comments = comments;
         }
 
         public DreamDataModel()

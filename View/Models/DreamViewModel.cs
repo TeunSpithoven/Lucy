@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace View.Models
@@ -20,13 +21,16 @@ namespace View.Models
 
         public DateTime CreationDateTime { get; }
 
-        public DreamViewModel(int id, int userId, string title, string story, DateTime creationDateTime)
+        public List<CommentViewModel> Comments { get; }
+
+        public DreamViewModel(int id, int userId, string title, string story, DateTime creationDateTime, List<CommentViewModel> comments)
         {
             Id = id;
             UserId = userId;
             Title = title;
             Story = story;
             CreationDateTime = creationDateTime;
+            Comments = comments;
         }
     }
 }

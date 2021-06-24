@@ -12,9 +12,11 @@ namespace Logic
     public class DreamLogic : IDreamLogic
     {
         private readonly IDreamData _dreamData;
-        public DreamLogic(IDreamData dreamData)
+        private readonly ICommentData _commentData;
+        public DreamLogic(IDreamData dreamData, ICommentData commentData)
         {
             _dreamData = dreamData;
+            _commentData = commentData;
         }
 
         public DreamLogicModel Create(int userId, string title, string story)
@@ -77,6 +79,7 @@ namespace Logic
 
         public DreamLogicModel GetDreamById(int id)
         {
+            // this test should test for an exception!
             ValidationContext context = new ValidationContext(new DreamLogicModel()) {MemberName = "Id"};
             IList<ValidationResult> errors = new List<ValidationResult>();
             
@@ -84,8 +87,10 @@ namespace Logic
             {
                 throw new ValidationException("DreamLogic GetDreamsByUserId validation failed");
             }
-            DreamDataModel conDream = _dreamData.GetDreamById(id);
-            DreamLogicModel returnDream = DreamLogicMapper.DataToLogicDreamModel(conDream);
+            DreamDataModel dataDream = _dreamData.GetDreamById(id);
+            if (dataDream == null) return null;
+            dataDream.Comments = _commentData.GetByDreamId(id);
+            DreamLogicModel returnDream = DreamLogicMapper.DataToLogicDreamModel(dataDream);
             return returnDream;
         }
     }

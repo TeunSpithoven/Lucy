@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Logic.Models
@@ -17,13 +18,16 @@ namespace Logic.Models
         public string Story { get; }
         public DateTime CreationDateTime { get; }
 
-        public DreamLogicModel(int id, int userId, string title, string story, DateTime creationDateTime)
+        public List<CommentLogicModel> Comments { get; }
+
+        public DreamLogicModel(int id, int userId, string title, string story, DateTime creationDateTime, List<CommentLogicModel> comments)
         {
             Id = id;
             UserId = userId;
             Title = title;
             Story = story;
             CreationDateTime = creationDateTime;
+            Comments = comments;
         }
         public DreamLogicModel(int id, int userId, string title, string story)
         {

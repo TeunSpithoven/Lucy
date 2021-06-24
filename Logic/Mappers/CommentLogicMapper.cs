@@ -12,7 +12,7 @@ namespace Logic.Mappers
 
         public static CommentDataModel LogicToDataCommentModel(CommentLogicModel l)
         {
-            return new(l.UserId, l.Message, l.DreamId);
+            return new(l.Id, l.UserId, l.Message, l.DreamId);
         }
     }
 }

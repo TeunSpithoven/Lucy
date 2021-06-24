@@ -33,7 +33,7 @@ namespace Data
                 throw new Exception("DreamSqlData GetAll failed.");
             }
 
-            return new DreamDataModel(newId, dataDream.UserId, dataDream.Title, dataDream.Story, now);
+            return new DreamDataModel(newId, dataDream.UserId, dataDream.Title, dataDream.Story, now, new List<CommentDataModel>());
         }
 
         // READ
@@ -64,7 +64,7 @@ namespace Data
                 string newDreamStory = reader["Story"].ToString();
                 DateTime newDreamDateTime = Convert.ToDateTime(reader["CreationDateTime"]);
 
-                DreamDataModel newDream = new(newDreamId, newDreamUserId, newDreamTitle, newDreamStory, newDreamDateTime);
+                DreamDataModel newDream = new(newDreamId, newDreamUserId, newDreamTitle, newDreamStory, newDreamDateTime, new List<CommentDataModel>());
 
                 // voegd die droom toe aan de lijst
                 returnList.Add(newDream);
@@ -99,7 +99,7 @@ namespace Data
                 string newDreamTitle = reader["Title"].ToString();
                 string newDreamStory = reader["Story"].ToString();
 
-                DreamDataModel newDream = new(newDreamId, newDreamUserId, newDreamTitle, newDreamStory, newDreamDateTime);
+                DreamDataModel newDream = new(newDreamId, newDreamUserId, newDreamTitle, newDreamStory, newDreamDateTime, new List<CommentDataModel>());
 
                 // voegd die droom toe aan de lijst
                 returnList.Add(newDream);
@@ -133,7 +133,7 @@ namespace Data
             string newDreamTitle = reader["Title"].ToString();
             string newDreamStory = reader["Story"].ToString();
 
-            DreamDataModel newDream = new(newDreamId, newDreamUserId, newDreamTitle, newDreamStory, newDreamDateTime);
+            DreamDataModel newDream = new(newDreamId, newDreamUserId, newDreamTitle, newDreamStory, newDreamDateTime, new List<CommentDataModel>());
             return newDream;
         }
 

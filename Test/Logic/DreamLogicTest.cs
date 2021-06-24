@@ -17,7 +17,8 @@ namespace Test.Logic
         {
             //arrange
             DreamTestData dreamMemData = new();
-            DreamLogic dreamLogic = new(dreamMemData);
+            CommentTestData commentMemData = new();
+            DreamLogic dreamLogic = new(dreamMemData, commentMemData);
             DreamTestData.Items.Clear();
 
             int userId = 2;
@@ -44,7 +45,8 @@ namespace Test.Logic
         {
             //arrange
             DreamTestData dreamMemData = new();
-            DreamLogic dreamLogic = new(dreamMemData);
+            CommentTestData commentMemData = new();
+            DreamLogic dreamLogic = new(dreamMemData, commentMemData);
             DreamTestData.Items.Clear();
 
             int id = 5;
@@ -67,7 +69,8 @@ namespace Test.Logic
         {
             //arrange
             DreamTestData dreamMemData = new();
-            DreamLogic dreamLogic = new(dreamMemData);
+            CommentTestData commentMemData = new();
+            DreamLogic dreamLogic = new(dreamMemData, commentMemData);
             DreamTestData.Items.Clear();
 
             int id = 5;
@@ -90,7 +93,8 @@ namespace Test.Logic
         {
             //arrange
             DreamTestData dreamMemData = new();
-            DreamLogic dreamLogic = new(dreamMemData);
+            CommentTestData commentMemData = new();
+            DreamLogic dreamLogic = new(dreamMemData, commentMemData);
             DreamTestData.Items.Clear();
 
             int id = 5;
@@ -114,7 +118,8 @@ namespace Test.Logic
         {
             //arrange
             DreamTestData dreamMemData = new();
-            DreamLogic dreamLogic = new(dreamMemData);
+            CommentTestData commentMemData = new();
+            DreamLogic dreamLogic = new(dreamMemData, commentMemData);
             DreamTestData.Items.Clear();
 
             int id = 5;
@@ -138,7 +143,8 @@ namespace Test.Logic
         {
             //arrange
             DreamTestData dreamMemData = new();
-            DreamLogic dreamLogic = new(dreamMemData);
+            CommentTestData commentMemData = new();
+            DreamLogic dreamLogic = new(dreamMemData, commentMemData);
             DreamTestData.Items.Clear();
 
             int id = 5;
@@ -163,7 +169,8 @@ namespace Test.Logic
         {
             //arrange
             DreamTestData dreamMemData = new();
-            DreamLogic dreamLogic = new(dreamMemData);
+            CommentTestData commentMemData = new();
+            DreamLogic dreamLogic = new(dreamMemData, commentMemData);
             DreamTestData.Items.Clear();
 
             int id = 5;
@@ -191,7 +198,8 @@ namespace Test.Logic
         {
             //arrange
             DreamTestData dreamMemData = new();
-            DreamLogic dreamLogic = new(dreamMemData);
+            CommentTestData commentMemData = new();
+            DreamLogic dreamLogic = new(dreamMemData, commentMemData);
             DreamTestData.Items.Clear();
 
             int id = 5;
